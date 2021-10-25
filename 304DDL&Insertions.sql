@@ -205,17 +205,17 @@ INSERT INTO TouristBuyTicket (TID, TicketNo)
 VALUES (2, 213);
 
 INSERT INTO Redeems (GID, TID)
-VALUES (1111, 1111);
+VALUES (3, 1111);
 INSERT INTO Redeems (GID, TID)
-VALUES (1112, 1112);
+VALUES (5, 1112);
 INSERT INTO Redeems (GID, TID)
-VALUES (1125, 1125);
+VALUES (6, 1125);
 INSERT INTO Redeems (GID, TID)
-VALUES (1141, 1141);
+VALUES (8, 1141);
 INSERT INTO Redeems (GID, TID)
-VALUES (1, 1);
+VALUES (20, 1);
 INSERT INTO Redeems (GID, TID)
-VALUES (3, 3);
+VALUES (20, 2);
 
 INSERT INTO Ticket_1 (TicketNo, Type)
 VALUES (123, 'Adolescent');
@@ -244,17 +244,17 @@ INSERT INTO Ticket_2 (Type, Price)
 VALUES ('Ferris wheel only', 8);
 
 INSERT INTO TicketForRide (TicketNo, RideName)
-VALUES (30, 'Carousel');
+VALUES (125, 'Carousel');
 INSERT INTO TicketForRide (TicketNo, RideName)
-VALUES (12, 'Ferris wheel');
+VALUES (125, 'Ferris wheel');
 INSERT INTO TicketForRide (TicketNo, RideName)
-VALUES (40, 'Roller-coaster');
+VALUES (200, 'Roller-coaster');
 INSERT INTO TicketForRide (TicketNo, RideName)
-VALUES (246, 'Jungle cruise');
+VALUES (200, 'Jungle cruise');
 INSERT INTO TicketForRide (TicketNo, RideName)
-VALUES (33, 'Haunted Mansion');
+VALUES (123, 'Haunted Mansion');
 INSERT INTO TicketForRide (TicketNo, RideName)
-VALUES (234, 'Flume ride');
+VALUES (124, 'Flume ride');
 
 INSERT INTO Arcade (Name, Location)
 VALUES ('Sunshine', '2205 Lower Mall');
@@ -270,17 +270,17 @@ INSERT INTO Arcade (Name, Location)
 VALUES ('Saga', '1023 ChuHeHanJie');
 
 INSERT INTO ArcadeHasGift (AName, GID)
-VALUES ('Sunshine', 121);
+VALUES ('Sunshine', 3);
 INSERT INTO ArcadeHasGift (AName, GID)
-VALUES ('Enjoy', 13);
+VALUES ('Enjoy', 5);
 INSERT INTO ArcadeHasGift (AName, GID)
-VALUES ('FunTime', 21);
+VALUES ('FunTime', 6);
 INSERT INTO ArcadeHasGift (AName, GID)
-VALUES ('Max!!', 22);
+VALUES ('Max!!', 8);
 INSERT INTO ArcadeHasGift (AName, GID)
-VALUES ('Come to play', 23);
+VALUES ('Come to play', 20);
 INSERT INTO ArcadeHasGift (AName, GID)
-VALUES ('Saga', 24);
+VALUES ('Saga', 25);
 
 INSERT INTO Machine (AName, MName, Type, Highscores)
 VALUES ('Saga', 'CarRace', 'Racing game', 330);
@@ -291,7 +291,7 @@ VALUES ('Saga', 'CraneMachine', 'Doll machine', 330);
 INSERT INTO Machine (AName, MName, Type, Highscores)
 VALUES ('Max!!', 'CarRace', 'Racing game', 330);
 INSERT INTO Machine (AName, MName, Type, Highscores)
-VALUES ('Come to play', 'CarRace', 'Racing game', 320);
+VALUES ('Come to play', 'Hoop', 'Basketball shooting game', 320);
 INSERT INTO Machine (AName, MName, Type, Highscores)
 VALUES ('FunTime', 'Resident Evil', 'First personal shooting game', 1000);
 
@@ -320,6 +320,18 @@ INSERT INTO Staff (WorkID, Name)
 VALUES (6, 'Susan');
 INSERT INTO Staff (WorkID, Name)
 VALUES (20, 'Lil Wayne');
+INSERT INTO Staff (WorkID, Name)
+VALUES (100, 'Maggie');
+INSERT INTO Staff (WorkID, Name)
+VALUES (101, 'Rosaline');
+INSERT INTO Staff (WorkID, Name)
+VALUES (102, 'Rachel');
+INSERT INTO Staff (WorkID, Name)
+VALUES (103, 'Peter');
+INSERT INTO Staff (WorkID, Name)
+VALUES (104, 'John Snow');
+INSERT INTO Staff (WorkID, Name)
+VALUES (105, 'Arya Stark');
 
 INSERT INTO Cashier-WorksAt(WorkID, AName)
 VALUES (1, 'Saga');
