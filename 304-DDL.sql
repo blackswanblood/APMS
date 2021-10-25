@@ -147,3 +147,5 @@ CREATE TABLE Ride_Maintains (
     FOREIGN KEY (EID) REFERENCES Equipment(ID)
         ON DELETE SET NULL
 );
+
+-- test the git
