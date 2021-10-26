@@ -148,7 +148,6 @@ CREATE TABLE Ride_Maintains (
         ON DELETE SET NULL
 );
 
--- test the git
 
 INSERT INTO Gift_1 (ID, Category)
 VALUES (3, 'stationery');
