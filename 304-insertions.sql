@@ -1,3 +1,5 @@
+
+
 INSERT INTO Gift_1 (ID, Category)
 VALUES (3, 'stationery');
 INSERT INTO Gift_1 (ID, Category)
@@ -38,17 +40,17 @@ INSERT INTO Tourist (ID, Name, Age, ArcadePoints)
 VALUES (2, 'Jerry', 80, 10500);
 
 
-INSERT INTO TouristBuyTicket (TID, TicketNo)
+INSERT INTO TouristBuysTicket (TID, TicketNo)
 VALUES (1111,123);
-INSERT INTO TouristBuyTicket (TID, TicketNo)
+INSERT INTO TouristBuysTicket (TID, TicketNo)
 VALUES (1112,124);
-INSERT INTO TouristBuyTicket (TID, TicketNo)
+INSERT INTO TouristBuysTicket (TID, TicketNo)
 VALUES (1125, 125);
-INSERT INTO TouristBuyTicket (TID, TicketNo)
+INSERT INTO TouristBuysTicket (TID, TicketNo)
 VALUES (1141, 126);
-INSERT INTO TouristBuyTicket (TID, TicketNo)
+INSERT INTO TouristBuysTicket (TID, TicketNo)
 VALUES (1, 200);
-INSERT INTO TouristBuyTicket (TID, TicketNo)
+INSERT INTO TouristBuysTicket (TID, TicketNo)
 VALUES (2, 213);
 
 INSERT INTO Redeems (GID, TID)
@@ -198,30 +200,30 @@ VALUES (6, 'FunTime');
 INSERT INTO Cashier-WorksAt(WorkID, AName)
 VALUES (20, 'Saga');
 
-INSERT INTO Operator_operates_1(WorkID, Qualification)
+INSERT INTO Operator_Operates_1(WorkID, Qualification)
 VALUES (1, 'Qualified to operate the Carousel');
-INSERT INTO Operator_operates_1(WorkID, Qualification)
+INSERT INTO Operator_Operates_1(WorkID, Qualification)
 VALUES (2, 'Qualified to operate the Carousel');
-INSERT INTO Operator_operates_1(WorkID, Qualification)
+INSERT INTO Operator_Operates_1(WorkID, Qualification)
 VALUES (4, 'Qualified to operate the Ferris wheel');
-INSERT INTO Operator_operates_1(WorkID, Qualification)
+INSERT INTO Operator_Operates_1(WorkID, Qualification)
 VALUES (17, 'Qualified to operate the Roller-coaster');
-INSERT INTO Operator_operates_1(WorkID, Qualification)
+INSERT INTO Operator_Operates_1(WorkID, Qualification)
 VALUES (6, 'Qualified to operate the Jungle cruise');
-INSERT INTO Operator_operates_1(WorkID, Qualification)
+INSERT INTO Operator_Operates_1(WorkID, Qualification)
 VALUES (20, 'Qualified to operate the Flume ride');
 
-INSERT INTO Operator_operates_2 (Qualification, RName)
+INSERT INTO Operator_Operates_2 (Qualification, RName)
 VALUES ('Qualified to operate the Carousel', 'Carousel');
-INSERT INTO Operator_operates_2 (Qualification, RName)
+INSERT INTO Operator_Operates_2 (Qualification, RName)
 VALUES ('Qualified to operate the Flume ride', 'Flume ride');
-INSERT INTO Operator_operates_2 (Qualification, RName)
+INSERT INTO Operator_Operates_2 (Qualification, RName)
 VALUES ('Qualified to operate the Roller-coaster', 'Roller-coaster');
-INSERT INTO Operator_operates_2 (Qualification, RName)
+INSERT INTO Operator_Operates_2 (Qualification, RName)
 VALUES ('Qualified to operate the Jungle cruise', 'Jungle cruise');
-INSERT INTO Operator_operates_2 (Qualification, RName)
+INSERT INTO Operator_Operates_2 (Qualification, RName)
 VALUES ('Qualified to operate the Haunted Mansion', 'Haunted Mansion');
-INSERT INTO Operator_operates_2 (Qualification, RName)
+INSERT INTO Operator_Operates_2 (Qualification, RName)
 VALUES ('Qualified to operate the Ferris wheel', 'Ferris wheel');
 
 INSERT INTO Technician (WorkID, Qualification)
