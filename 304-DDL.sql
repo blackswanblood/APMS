@@ -102,14 +102,14 @@ CREATE TABLE Cashier_WorksAt (
 
 CREATE TABLE Operator_Operates_1 (
     WorkID INTEGER PRIMARY KEY, 
-    Qualification CHAR(30),
+    Qualification CHAR(50),
     FOREIGN KEY (WorkID) REFERENCES Staff(WorkID)
         ON DELETE CASCADE, 
     FOREIGN KEY (Qualification) REFERENCES Operator_Operates_2
 );
 
 CREATE TABLE Operator_Operates_2 (
-    Qualification CHAR(30) PRIMARY KEY,
+    Qualification CHAR(50) PRIMARY KEY,
     RName CHAR(30),
     FOREIGN KEY (RName) REFERENCES Ride_Maintains(RName)
         ON DELETE SET NULL 
@@ -117,7 +117,7 @@ CREATE TABLE Operator_Operates_2 (
 
 CREATE TABLE Technician (
     WorkID INTEGER PRIMARY KEY, 
-    Qualification CHAR(30),
+    Qualification CHAR(50),
     FOREIGN KEY (WorkID) REFERENCES Staff(WorkID)
         ON DELETE CASCADE
 );
