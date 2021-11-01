@@ -1,16 +1,3 @@
-INSERT INTO Gift_1 (ID, Category)
-VALUES (3, 'stationery');
-INSERT INTO Gift_1 (ID, Category)
-VALUES (5, 'stationery');
-INSERT INTO Gift_1 (ID, Category)
-VALUES (6, 'gaming consoles');
-INSERT INTO Gift_1 (ID, Category)
-VALUES (8, 'household electronics');
-INSERT INTO Gift_1 (ID, Category)
-VALUES (20, 'middle-size stuffed toys');
-INSERT INTO Gift_1 (ID, Category)
-VALUES (25, 'books');
-
 INSERT INTO Gift_2 (Category, Pointsrequired)
 VALUES ('stationery', 100);
 INSERT INTO Gift_2 (Category, Pointsrequired)
@@ -24,6 +11,53 @@ VALUES ('household electronics', 1000);
 INSERT INTO Gift_2 (Category, Pointsrequired)
 VALUES ('gaming console', 30000);
 
+INSERT INTO Staff (WorkID, Name)
+VALUES (1, 'Bob');
+INSERT INTO Staff (WorkID, Name)
+VALUES (2, 'Lucy');
+INSERT INTO Staff (WorkID, Name)
+VALUES (4, 'Lisa');
+INSERT INTO Staff (WorkID, Name)
+VALUES (17, 'Paul');
+INSERT INTO Staff (WorkID, Name)
+VALUES (6, 'Susan');
+INSERT INTO Staff (WorkID, Name)
+VALUES (20, 'Lil Wayne');
+INSERT INTO Staff (WorkID, Name)
+VALUES (100, 'Maggie');
+INSERT INTO Staff (WorkID, Name)
+VALUES (101, 'Rosaline');
+INSERT INTO Staff (WorkID, Name)
+VALUES (102, 'Rachel');
+INSERT INTO Staff (WorkID, Name)
+VALUES (103, 'Peter');
+INSERT INTO Staff (WorkID, Name)
+VALUES (104, 'John Snow');
+INSERT INTO Staff (WorkID, Name)
+VALUES (105, 'Arya Stark');
+
+INSERT INTO Equipment(ID) VALUES (10);
+INSERT INTO Equipment(ID) VALUES (11);
+INSERT INTO Equipment(ID) VALUES (12);
+INSERT INTO Equipment(ID) VALUES (13);
+INSERT INTO Equipment(ID) VALUES (14);
+INSERT INTO Equipment(ID) VALUES (15);
+
+INSERT INTO Gift_1 (ID, Category)
+VALUES (3, 'stationery');
+INSERT INTO Gift_1 (ID, Category)
+VALUES (5, 'stationery');
+INSERT INTO Gift_1 (ID, Category)
+VALUES (6, 'gaming console');
+INSERT INTO Gift_1 (ID, Category)
+VALUES (8, 'household electronics');
+INSERT INTO Gift_1 (ID, Category)
+VALUES (20, 'middle-size stuffed toys');
+INSERT INTO Gift_1 (ID, Category)
+VALUES (25, 'books');
+
+
+
 INSERT INTO Tourist (ID, Name, Age, ArcadePoints)
 VALUES (1111, 'Jack',18,1500);
 INSERT INTO Tourist (ID, Name, Age, ArcadePoints)
@@ -36,46 +70,6 @@ INSERT INTO Tourist (ID, Name, Age, ArcadePoints)
 VALUES (1, 'Beren', 10, 10500);
 INSERT INTO Tourist (ID, Name, Age, ArcadePoints)
 VALUES (2, 'Jerry', 80, 10500);
-
-
-INSERT INTO TouristBuysTicket (TID, TicketNo)
-VALUES (1111,123);
-INSERT INTO TouristBuysTicket (TID, TicketNo)
-VALUES (1112,124);
-INSERT INTO TouristBuysTicket (TID, TicketNo)
-VALUES (1125, 125);
-INSERT INTO TouristBuysTicket (TID, TicketNo)
-VALUES (1141, 126);
-INSERT INTO TouristBuysTicket (TID, TicketNo)
-VALUES (1, 200);
-INSERT INTO TouristBuysTicket (TID, TicketNo)
-VALUES (2, 213);
-
-INSERT INTO Redeems (GID, TID)
-VALUES (3, 1111);
-INSERT INTO Redeems (GID, TID)
-VALUES (5, 1112);
-INSERT INTO Redeems (GID, TID)
-VALUES (6, 1125);
-INSERT INTO Redeems (GID, TID)
-VALUES (8, 1141);
-INSERT INTO Redeems (GID, TID)
-VALUES (20, 1);
-INSERT INTO Redeems (GID, TID)
-VALUES (20, 2);
-
-INSERT INTO Ticket_1 (TicketNo, Type)
-VALUES (123, 'Adolescent');
-INSERT INTO Ticket_1 (TicketNo, Type)
-VALUES (124, 'Adult');
-INSERT INTO Ticket_1 (TicketNo, Type)
-VALUES (213, 'Senior');
-INSERT INTO Ticket_1 (TicketNo, Type)
-VALUES (125, 'Combo_1');
-INSERT INTO Ticket_1 (TicketNo, Type)
-VALUES (200, 'Combo_2');
-INSERT INTO Ticket_1 (TicketNo, Type)
-VALUES (12, 'Ferris wheel only');
 
 INSERT INTO Ticket_2 (Type, Price)
 VALUES ('Adolescent', 200);
@@ -94,6 +88,73 @@ VALUES ('Combo_1', 80);
 INSERT into Ticket_2 (Type, Price)
 VALUES ('Combo_2', 60);
 
+INSERT INTO Ticket_1 (TicketNo, Type)
+VALUES (123, 'Adolescent');
+INSERT INTO Ticket_1 (TicketNo, Type)
+VALUES (124, 'Adult');
+INSERT INTO Ticket_1 (TicketNo, Type)
+VALUES (213, 'Senior');
+INSERT INTO Ticket_1 (TicketNo, Type)
+VALUES (125, 'Combo_1');
+INSERT INTO Ticket_1 (TicketNo, Type)
+VALUES (200, 'Combo_2');
+INSERT INTO Ticket_1 (TicketNo, Type)
+VALUES (12, 'Ferris wheel only');
+
+
+
+INSERT INTO TouristBuysTicket (TID, TicketNo)
+VALUES (1111,123);
+INSERT INTO TouristBuysTicket (TID, TicketNo)
+VALUES (1112,124);
+INSERT INTO TouristBuysTicket (TID, TicketNo)
+VALUES (1125, 125);
+INSERT INTO TouristBuysTicket (TID, TicketNo)
+VALUES (1141, 12);
+INSERT INTO TouristBuysTicket (TID, TicketNo)
+VALUES (1, 200);
+INSERT INTO TouristBuysTicket (TID, TicketNo)
+VALUES (2, 213);
+
+INSERT INTO Redeems (GID, TID)
+VALUES (3, 1111);
+INSERT INTO Redeems (GID, TID)
+VALUES (5, 1112);
+INSERT INTO Redeems (GID, TID)
+VALUES (6, 1125);
+INSERT INTO Redeems (GID, TID)
+VALUES (8, 1141);
+INSERT INTO Redeems (GID, TID)
+VALUES (20, 1);
+INSERT INTO Redeems (GID, TID)
+VALUES (25, 2);
+
+
+INSERT INTO Technician (WorkID, Qualification)
+VALUES (100, 'Qualified to maintain the Flume ride');
+INSERT INTO Technician (WorkID, Qualification)
+VALUES (101, 'Qualified to maintain the Ferris wheel');
+INSERT INTO Technician (WorkID, Qualification)
+VALUES (102, 'Qualified to maintain the Roller-coaster');
+INSERT INTO Technician (WorkID, Qualification)
+VALUES (103, 'Qualified to maintain the Carousel');
+INSERT INTO Technician (WorkID, Qualification)
+VALUES (104, 'Qualified to maintain the Haunted Mansion');
+INSERT INTO Technician (WorkID, Qualification)
+VALUES (105, 'Qualified to maintain the Jungle cruise');
+
+INSERT INTO Ride_Maintains(RName, PassengerLimit, WorkID, EID, TimeofInspection)
+VALUES ('Roller-coaster', 40, 102, 11, TO_DATE('2019-01-01','YYYY-MM-DD'));
+INSERT INTO Ride_Maintains(RName, PassengerLimit, WorkID, EID, TimeofInspection)
+VALUES ('Carousel', 40, 103, 12, TO_DATE('2019-01-01','YYYY-MM-DD'));
+INSERT INTO Ride_Maintains(RName, PassengerLimit, WorkID, EID, TimeofInspection)
+VALUES ('Flume ride', 50, 100, 10, TO_DATE('2019-01-01','YYYY-MM-DD'));
+INSERT INTO Ride_Maintains(RName, PassengerLimit, WorkID, EID, TimeofInspection)
+VALUES ('Ferris wheel', 50, 101, 10, TO_DATE('2019-10-01','YYYY-MM-DD'));
+INSERT INTO Ride_Maintains(RName, PassengerLimit, WorkID, EID, TimeofInspection)
+VALUES ('Haunted Mansion', 15, 104, 13, TO_DATE('2019-01-01','YYYY-MM-DD'));
+INSERT INTO Ride_Maintains(RName, PassengerLimit, WorkID, EID, TimeofInspection)
+VALUES ('Jungle cruise', 15, 105, 13, TO_DATE('2019-09-21','YYYY-MM-DD'));
 
 INSERT INTO TicketForRide (TicketNo, RideName)
 VALUES (125, 'Carousel');
@@ -154,62 +215,26 @@ VALUES (1111, 'Max!!', 'CarRace', 15);
 INSERT INTO TouristPlaysMachine (TID, AName, MName, PointsEarned)
 VALUES (1112, 'Saga', 'CraneMachine',10);
 INSERT INTO TouristPlaysMachine (TID, AName, MName, PointsEarned)
-VALUES (1113, 'Saga', 'CarRace', 20);
+VALUES (2, 'Saga', 'CarRace', 20);
 INSERT INTO TouristPlaysMachine (TID, AName, MName, PointsEarned)
 VALUES (1125, 'Come to play', 'Hoop', 10);
 INSERT INTO TouristPlaysMachine (TID, AName, MName, PointsEarned)
 VALUES (1141, 'FunTime', 'Resident Evil', 8);
 
-INSERT INTO Staff (WorkID, Name)
-VALUES (1, 'Bob');
-INSERT INTO Staff (WorkID, Name)
-VALUES (2, 'Lucy');
-INSERT INTO Staff (WorkID, Name)
-VALUES (4, 'Lisa');
-INSERT INTO Staff (WorkID, Name)
-VALUES (17, 'Paul');
-INSERT INTO Staff (WorkID, Name)
-VALUES (6, 'Susan');
-INSERT INTO Staff (WorkID, Name)
-VALUES (20, 'Lil Wayne');
-INSERT INTO Staff (WorkID, Name)
-VALUES (100, 'Maggie');
-INSERT INTO Staff (WorkID, Name)
-VALUES (101, 'Rosaline');
-INSERT INTO Staff (WorkID, Name)
-VALUES (102, 'Rachel');
-INSERT INTO Staff (WorkID, Name)
-VALUES (103, 'Peter');
-INSERT INTO Staff (WorkID, Name)
-VALUES (104, 'John Snow');
-INSERT INTO Staff (WorkID, Name)
-VALUES (105, 'Arya Stark');
 
-INSERT INTO Cashier-WorksAt(WorkID, AName)
+
+INSERT INTO Cashier_WorksAt(WorkID, AName)
 VALUES (1, 'Saga');
-INSERT INTO Cashier-WorksAt(WorkID, AName)
+INSERT INTO Cashier_WorksAt(WorkID, AName)
 VALUES (2, 'Saga');
-INSERT INTO Cashier-WorksAt(WorkID, AName)
+INSERT INTO Cashier_WorksAt(WorkID, AName)
 VALUES (4, 'Come to play');
-INSERT INTO Cashier-WorksAt(WorkID, AName)
+INSERT INTO Cashier_WorksAt(WorkID, AName)
 VALUES (17, 'Max!!');
-INSERT INTO Cashier-WorksAt(WorkID, AName)
+INSERT INTO Cashier_WorksAt(WorkID, AName)
 VALUES (6, 'FunTime');
-INSERT INTO Cashier-WorksAt(WorkID, AName)
+INSERT INTO Cashier_WorksAt(WorkID, AName)
 VALUES (20, 'Saga');
-
-INSERT INTO Operator_Operates_1(WorkID, Qualification)
-VALUES (1, 'Qualified to operate the Carousel');
-INSERT INTO Operator_Operates_1(WorkID, Qualification)
-VALUES (2, 'Qualified to operate the Carousel');
-INSERT INTO Operator_Operates_1(WorkID, Qualification)
-VALUES (4, 'Qualified to operate the Ferris wheel');
-INSERT INTO Operator_Operates_1(WorkID, Qualification)
-VALUES (17, 'Qualified to operate the Roller-coaster');
-INSERT INTO Operator_Operates_1(WorkID, Qualification)
-VALUES (6, 'Qualified to operate the Jungle cruise');
-INSERT INTO Operator_Operates_1(WorkID, Qualification)
-VALUES (20, 'Qualified to operate the Flume ride');
 
 INSERT INTO Operator_Operates_2 (Qualification, RName)
 VALUES ('Qualified to operate the Carousel', 'Carousel');
@@ -224,26 +249,25 @@ VALUES ('Qualified to operate the Haunted Mansion', 'Haunted Mansion');
 INSERT INTO Operator_Operates_2 (Qualification, RName)
 VALUES ('Qualified to operate the Ferris wheel', 'Ferris wheel');
 
-INSERT INTO Technician (WorkID, Qualification)
-VALUES (100, 'Qualified to maintain the Flume ride');
-INSERT INTO Technician (WorkID, Qualification)
-VALUES (101, 'Qualified to maintain the Ferris wheel');
-INSERT INTO Technician (WorkID, Qualification)
-VALUES (102, 'Qualified to maintain the Roller-coaster');
-INSERT INTO Technician (WorkID, Qualification)
-VALUES (103, 'Qualified to maintain the Carousel');
-INSERT INTO Technician (WorkID, Qualification)
-VALUES (104, 'Qualified to maintain the Haunted Mansion');
-INSERT INTO Technician (WorkID, Qualification)
-VALUES (105, 'Qualified to maintain the Jungle cruise');
+
+INSERT INTO Operator_Operates_1(WorkID, Qualification)
+VALUES (1, 'Qualified to operate the Carousel');
+INSERT INTO Operator_Operates_1(WorkID, Qualification)
+VALUES (2, 'Qualified to operate the Carousel');
+INSERT INTO Operator_Operates_1(WorkID, Qualification)
+VALUES (4, 'Qualified to operate the Ferris wheel');
+INSERT INTO Operator_Operates_1(WorkID, Qualification)
+VALUES (17, 'Qualified to operate the Roller-coaster');
+INSERT INTO Operator_Operates_1(WorkID, Qualification)
+VALUES (6, 'Qualified to operate the Jungle cruise');
+INSERT INTO Operator_Operates_1(WorkID, Qualification)
+VALUES (20, 'Qualified to operate the Flume ride');
 
 
-INSERT INTO Equipment(ID) VALUES (10);
-INSERT INTO Equipment(ID) VALUES (11);
-INSERT INTO Equipment(ID) VALUES (12);
-INSERT INTO Equipment(ID) VALUES (13);
-INSERT INTO Equipment(ID) VALUES (14);
-INSERT INTO Equipment(ID) VALUES (15);
+
+
+
+
 
 INSERT INTO Uses (WID, EID) VALUES (100, 10);
 INSERT INTO Uses (WID, EID) VALUES (101, 10);
@@ -252,15 +276,3 @@ INSERT INTO Uses (WID, EID) VALUES (103, 12);
 INSERT INTO Uses (WID, EID) VALUES (104, 13);
 INSERT INTO Uses (WID, EID) VALUES (105, 14);
 
-INSERT INTO Ride_Maintains(RName, PassengerLimit, WorkID, EID, TimeofInspection)
-VALUES ('Roller-coaster', 40, 102, 11, TO_DATE('2019-01-01'));
-INSERT INTO Ride_Maintains(RName, PassengerLimit, WorkID, EID, TimeofInspection)
-VALUES ('Carousel', 40, 103, 12, TO_DATE('2019-01-01'));
-INSERT INTO Ride_Maintains(RName, PassengerLimit, WorkID, EID, TimeofInspection)
-VALUES ('Flume ride', 50, 100, 10, TO_DATE('2019-01-01'));
-INSERT INTO Ride_Maintains(RName, PassengerLimit, WorkID, EID, TimeofInspection)
-VALUES ('Ferris wheel', 50, 101, 10, TO_DATE('2019-10-01'));
-INSERT INTO Ride_Maintains(RName, PassengerLimit, WorkID, EID, TimeofInspection)
-VALUES ('Haunted Mansion', 15, 104, 13, TO_DATE('2019-01-01'));
-INSERT INTO Ride_Maintains(RName, PassengerLimit, WorkID, EID, TimeofInspection)
-VALUES ('Jungle cruise', 15, 105, 13, TO_DATE('2019-09-21'));
