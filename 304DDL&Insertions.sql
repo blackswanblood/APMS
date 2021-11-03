@@ -128,7 +128,7 @@ CREATE TABLE Equipment (
 )
 
 CREATE TABLE Uses (
-    WD INTEGER, 
+    WID INTEGER,
     EID INTEGER,
     PRIMARY KEY (WD, EID),
     FOREIGN KEY (WID) references Technician(WorkID),
@@ -191,17 +191,17 @@ INSERT INTO Tourist (ID, Name, Age, ArcadePoints)
 VALUES (2, 'Jerry', 80, 10500);
 
 
-INSERT INTO TouristBuyTicket (TID, TicketNo)
+INSERT INTO TouristBuysTicket (TID, TicketNo)
 VALUES (1111,123);
-INSERT INTO TouristBuyTicket (TID, TicketNo)
+INSERT INTO TouristBuysTicket (TID, TicketNo)
 VALUES (1112,124);
-INSERT INTO TouristBuyTicket (TID, TicketNo)
+INSERT INTO TouristBuysTicket (TID, TicketNo)
 VALUES (1125, 125);
-INSERT INTO TouristBuyTicket (TID, TicketNo)
+INSERT INTO TouristBuysTicket (TID, TicketNo)
 VALUES (1141, 126);
-INSERT INTO TouristBuyTicket (TID, TicketNo)
+INSERT INTO TouristBuysTicket (TID, TicketNo)
 VALUES (1, 200);
-INSERT INTO TouristBuyTicket (TID, TicketNo)
+INSERT INTO TouristBuysTicket (TID, TicketNo)
 VALUES (2, 213);
 
 INSERT INTO Redeems (GID, TID)
