@@ -9,8 +9,8 @@ from django.db import models
 
 
 class Arcade(models.Model):
-    name = models.CharField(db_column='Name', primary_key=True, blank=True, null=True)  # Field name made lowercase.
-    location = models.CharField(db_column='Location', blank=True, null=True)  # Field name made lowercase.
+    name = models.CharField(db_column='Name', primary_key=True, blank=True, max_length=30)  # Field name made lowercase.
+    location = models.CharField(db_column='Location', blank=True, null=True, max_length=50)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -18,7 +18,7 @@ class Arcade(models.Model):
 
 
 class Arcadehasgift(models.Model):
-    aname = models.ForeignKey(Arcade, models.DO_NOTHING, db_column='AName', blank=True, null=True)  # Field name made lowercase.
+    aname = models.ForeignKey(Arcade, models.DO_NOTHING, db_column='AName', blank=True, null=True, max_length=30)  # Field name made lowercase.
     gid = models.ForeignKey('Gift1', models.DO_NOTHING, db_column='GID', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
@@ -27,8 +27,8 @@ class Arcadehasgift(models.Model):
 
 
 class CashierWorksat(models.Model):
-    workid = models.AutoField(db_column='WorkID', primary_key=True, blank=True, null=True)  # Field name made lowercase.
-    aname = models.CharField(db_column='AName')  # Field name made lowercase.
+    workid = models.IntegerField(db_column='WorkID', primary_key=True, blank=True)  # Field name made lowercase.
+    aname = models.CharField(db_column='AName', max_length=30)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -36,7 +36,7 @@ class CashierWorksat(models.Model):
 
 
 class Equipment(models.Model):
-    id = models.AutoField(db_column='ID', primary_key=True, blank=True, null=True)  # Field name made lowercase.
+    id = models.IntegerField(db_column='ID', primary_key=True, blank=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -44,8 +44,8 @@ class Equipment(models.Model):
 
 
 class Gift1(models.Model):
-    id = models.AutoField(db_column='ID', primary_key=True, blank=True, null=True)  # Field name made lowercase.
-    category = models.CharField(db_column='Category')  # Field name made lowercase.
+    id = models.IntegerField(db_column='ID', primary_key=True, blank=True)  # Field name made lowercase.
+    category = models.CharField(db_column='Category', max_length=30)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -53,7 +53,7 @@ class Gift1(models.Model):
 
 
 class Gift2(models.Model):
-    category = models.CharField(db_column='Category', primary_key=True, blank=True, null=True)  # Field name made lowercase.
+    category = models.CharField(db_column='Category', primary_key=True, blank=True, max_length=30)  # Field name made lowercase.
     pointsrequired = models.IntegerField(db_column='PointsRequired')  # Field name made lowercase.
 
     class Meta:
@@ -63,8 +63,8 @@ class Gift2(models.Model):
 
 class Machine(models.Model):
     aname = models.ForeignKey(Arcade, models.DO_NOTHING, db_column='AName', blank=True, null=True)  # Field name made lowercase.
-    mname = models.CharField(db_column='MName', blank=True, null=True)  # Field name made lowercase.
-    type = models.CharField(db_column='Type', blank=True, null=True)  # Field name made lowercase.
+    mname = models.CharField(db_column='MName', blank=True, null=True, max_length=30)  # Field name made lowercase.
+    type = models.CharField(db_column='Type', blank=True, null=True, max_length=30)  # Field name made lowercase.
     highscores = models.IntegerField(db_column='Highscores', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
@@ -73,8 +73,8 @@ class Machine(models.Model):
 
 
 class OperatorOperates1(models.Model):
-    workid = models.OneToOneField('Staff', models.DO_NOTHING, db_column='WorkID', primary_key=True, blank=True, null=True)  # Field name made lowercase.
-    qualification = models.CharField(db_column='Qualification', blank=True, null=True)  # Field name made lowercase.
+    workid = models.OneToOneField('Staff', models.DO_NOTHING, db_column='WorkID', primary_key=True, blank=True)  # Field name made lowercase.
+    qualification = models.CharField(db_column='Qualification', blank=True, null=True, max_length=50)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -82,7 +82,7 @@ class OperatorOperates1(models.Model):
 
 
 class OperatorOperates2(models.Model):
-    qualification = models.CharField(db_column='Qualification', primary_key=True, blank=True, null=True)  # Field name made lowercase.
+    qualification = models.CharField(db_column='Qualification', primary_key=True, blank=True, max_length=50)  # Field name made lowercase.
     rname = models.ForeignKey('RideMaintains', models.DO_NOTHING, db_column='RName', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
@@ -100,7 +100,7 @@ class Redeems(models.Model):
 
 
 class RideMaintains(models.Model):
-    rname = models.CharField(db_column='RName', primary_key=True, blank=True, null=True)  # Field name made lowercase.
+    rname = models.CharField(db_column='RName', primary_key=True, blank=True, max_length=30)  # Field name made lowercase.
     passengerlimit = models.IntegerField(db_column='PassengerLimit')  # Field name made lowercase.
     workid = models.ForeignKey('Technician', models.DO_NOTHING, db_column='WorkID')  # Field name made lowercase.
     eid = models.ForeignKey(Equipment, models.DO_NOTHING, db_column='EID')  # Field name made lowercase.
@@ -112,8 +112,8 @@ class RideMaintains(models.Model):
 
 
 class Staff(models.Model):
-    workid = models.AutoField(db_column='WorkID', primary_key=True, blank=True, null=True)  # Field name made lowercase.
-    name = models.CharField(db_column='Name')  # Field name made lowercase.
+    workid = models.AutoField(db_column='WorkID', primary_key=True, blank=True)  # Field name made lowercase.
+    name = models.CharField(db_column='Name', max_length=30)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -121,8 +121,8 @@ class Staff(models.Model):
 
 
 class Technician(models.Model):
-    workid = models.OneToOneField(Staff, models.DO_NOTHING, db_column='WorkID', primary_key=True, blank=True, null=True)  # Field name made lowercase.
-    qualification = models.CharField(db_column='Qualification', blank=True, null=True)  # Field name made lowercase.
+    workid = models.OneToOneField(Staff, models.DO_NOTHING, db_column='WorkID', primary_key=True, blank=True)  # Field name made lowercase.
+    qualification = models.CharField(db_column='Qualification', blank=True, null=True, max_length=50)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -130,7 +130,7 @@ class Technician(models.Model):
 
 
 class Ticketforride(models.Model):
-    ticketno = models.AutoField(db_column='TicketNo', blank=True, null=True)  # Field name made lowercase.
+    ticketno = models.IntegerField(db_column='TicketNo', blank=True, null=True)  # Field name made lowercase.
     ridename = models.ForeignKey(RideMaintains, models.DO_NOTHING, db_column='RideName', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
@@ -139,8 +139,8 @@ class Ticketforride(models.Model):
 
 
 class Ticket1(models.Model):
-    ticketno = models.AutoField(db_column='TicketNo', primary_key=True, blank=True, null=True)  # Field name made lowercase.
-    type = models.CharField(db_column='Type')  # Field name made lowercase.
+    ticketno = models.IntegerField(db_column='TicketNo', primary_key=True, blank=True)  # Field name made lowercase.
+    type = models.CharField(db_column='Type', max_length=30)  # Field name made lowercase.
 
     class Meta:
         managed = False
@@ -148,7 +148,7 @@ class Ticket1(models.Model):
 
 
 class Ticket2(models.Model):
-    type = models.CharField(db_column='Type', primary_key=True, blank=True, null=True)  # Field name made lowercase.
+    type = models.CharField(db_column='Type', primary_key=True, blank=True, max_length=30)  # Field name made lowercase.
     price = models.IntegerField(db_column='Price')  # Field name made lowercase.
 
     class Meta:
@@ -157,8 +157,8 @@ class Ticket2(models.Model):
 
 
 class Tourist(models.Model):
-    id = models.AutoField(db_column='ID', primary_key=True, blank=True, null=True)  # Field name made lowercase.
-    name = models.CharField(db_column='Name')  # Field name made lowercase.
+    id = models.IntegerField(db_column='ID', primary_key=True, blank=True)  # Field name made lowercase.
+    name = models.CharField(db_column='Name', max_length=30)  # Field name made lowercase.
     age = models.IntegerField(db_column='Age', blank=True, null=True)  # Field name made lowercase.
     arcadepoints = models.IntegerField(db_column='ArcadePoints', blank=True, null=True)  # Field name made lowercase.
 
@@ -178,8 +178,8 @@ class Touristbuysticket(models.Model):
 
 class Touristplaysmachine(models.Model):
     tid = models.ForeignKey(Tourist, models.DO_NOTHING, db_column='TID', blank=True, null=True)  # Field name made lowercase.
-    aname = models.CharField(db_column='AName', blank=True, null=True)  # Field name made lowercase.
-    mname = models.CharField(db_column='MName', blank=True, null=True)  # Field name made lowercase.
+    aname = models.CharField(db_column='AName', blank=True, null=True, max_length=30)  # Field name made lowercase.
+    mname = models.CharField(db_column='MName', blank=True, null=True, max_length=30)  # Field name made lowercase.
     pointsearned = models.IntegerField(db_column='PointsEarned', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
