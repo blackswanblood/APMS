@@ -1,0 +1,24 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'SystemSite/style.css' %}">
+
+{% if tourist_list %}
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Arcade Points</th>
+        </tr>
+        {% for tourist in tourist_list %}
+        <tr>
+            <th>{{tourist.id}}</th>
+            <th>{{tourist.name}}</th>
+            <th>{{tourist.age}}</th>
+            <th>{{tourist.arcadepoints}}</th>
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <p>No tourists found.</p>
+{% endif %}
