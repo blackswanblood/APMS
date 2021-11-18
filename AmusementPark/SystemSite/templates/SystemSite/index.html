@@ -147,10 +147,16 @@
                                 <div id="submenu-5" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#">Tourist List</a>
+                                            <a class="nav-link" href="#touristList">Tourist List</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="pages/data-tables.html">Data Tables</a>
+                                            <a class="nav-link" href="#staffList">Staff List</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#arcadeHasGiftList">Gifts in Arcades</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#cashierWorkAtList">Cashier List</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -266,8 +272,8 @@
                             <!-- ============================================================== -->
                         </div>
 
-                        <div class="row">
-                            <!-- Tourist List -->
+                        <!-- Tourist List -->
+                        <div class="row" id="touristList">
                             <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <h5 class="card-header">Tourist List</h5>
@@ -300,9 +306,102 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- ============================================================== -->
-                            <!-- end recent orders  -->
+                        </div>
 
+                        <!-- Staff List -->
+                        <div class="row" id="staffList">
+                            <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
+                                <div class="card">
+                                    <h5 class="card-header">Staff List</h5>
+                                    <div class="card-body p-0">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                {% if tourist_list %}
+                                                <thead class="bg-light">
+                                                    <tr class="border-0">
+                                                        <th class="border-0">WorkID</th>
+                                                        <th class="border-0">Name</th>
+                                                    </tr>
+                                                </thead>
+                                                {% for staff in staff_list %}
+                                                <tbody>
+                                                    <tr>
+                                                        <td>{{staff.workid}}</td>
+                                                        <td>{{staff.name}}</td>
+                                                </tbody>
+                                                {% endfor %}
+                                            </table>
+                                            {% else %}
+                                            <p>No staff found.</p>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Archade Has Gift List-->
+                        <div class="row" id="arcadeHasGiftList">
+                            <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
+                                <div class="card">
+                                    <h5 class="card-header">Gift in Arcades</h5>
+                                    <div class="card-body p-0">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                {% if arcade_gift_list %}
+                                                <thead class="bg-light">
+                                                    <tr class="border-0">
+                                                        <th class="border-0">Arcade Name</th>
+                                                        <th class="border-0">Gift ID</th>
+                                                    </tr>
+                                                </thead>
+                                                {% for agl in arcade_gift_list %}
+                                                <tbody>
+                                                    <tr>
+                                                        <td>{{agl.aname.name}}</td>
+                                                        <td>{{agl.gid.id}}</td>
+                                                </tbody>
+                                                {% endfor %}
+                                            </table>
+                                            {% else %}
+                                            <p>No result found.</p>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Cashier List -->
+                        <div class="row" id="cashierWorkAtList">
+                            <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
+                                <div class="card">
+                                    <h5 class="card-header">Cashier in Arcades</h5>
+                                    <div class="card-body p-0">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                {% if cashier_worksat_list %}
+                                                <thead class="bg-light">
+                                                    <tr class="border-0">
+                                                        <th class="border-0">Work ID</th>
+                                                        <th class="border-0">Arcade Name</th>
+                                                    </tr>
+                                                </thead>
+                                                {% for cwl in cashier_worksat_list %}
+                                                <tbody>
+                                                    <tr>
+                                                        <td>{{cwl.workid}}</td>
+                                                        <td>{{cwl.aname}}</td>
+                                                </tbody>
+                                                {% endfor %}
+                                            </table>
+                                            {% else %}
+                                            <p>No result found.</p>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
 
@@ -329,38 +428,7 @@
                                 <!-- ============================================================== -->
                             </div>
                             <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
-                                <!-- ============================================================== -->
-                                <!-- sales traffice source  -->
-                                <!-- ============================================================== -->
-<!--                                <div class="card">-->
-<!--                                    <h5 class="card-header"> Sales By Traffic Source</h5>-->
-<!--                                    <div class="card-body p-0">-->
-<!--                                        <ul class="traffic-sales list-group list-group-flush">-->
-<!--                                            <li class="traffic-sales-content list-group-item "><span class="traffic-sales-name">Direct</span><span class="traffic-sales-amount">$4000.00  <span class="icon-circle-small icon-box-xs text-success ml-4 bg-success-light"><i class="fa fa-fw fa-arrow-up"></i></span><span class="ml-1 text-success">5.86%</span></span>-->
-<!--                                            </li>-->
-<!--                                            <li class="traffic-sales-content list-group-item"><span class="traffic-sales-name">Search<span class="traffic-sales-amount">$3123.00  <span class="icon-circle-small icon-box-xs text-success ml-4 bg-success-light"><i class="fa fa-fw fa-arrow-up"></i></span><span class="ml-1 text-success">5.86%</span></span>-->
-<!--                                                </span>-->
-<!--                                            </li>-->
-<!--                                            <li class="traffic-sales-content list-group-item"><span class="traffic-sales-name">Social<span class="traffic-sales-amount ">$3099.00  <span class="icon-circle-small icon-box-xs text-success ml-4 bg-success-light"><i class="fa fa-fw fa-arrow-up"></i></span><span class="ml-1 text-success">5.86%</span></span>-->
-<!--                                                </span>-->
-<!--                                            </li>-->
-<!--                                            <li class="traffic-sales-content list-group-item"><span class="traffic-sales-name">Referrals<span class="traffic-sales-amount ">$2220.00   <span class="icon-circle-small icon-box-xs text-danger ml-4 bg-danger-light"><i class="fa fa-fw fa-arrow-down"></i></span><span class="ml-1 text-danger">4.02%</span></span>-->
-<!--                                                </span>-->
-<!--                                            </li>-->
-<!--                                            <li class="traffic-sales-content list-group-item "><span class="traffic-sales-name">Email<span class="traffic-sales-amount">$1567.00   <span class="icon-circle-small icon-box-xs text-danger ml-4 bg-danger-light"><i class="fa fa-fw fa-arrow-down"></i></span><span class="ml-1 text-danger">3.86%</span></span>-->
-<!--                                                </span>-->
-<!--                                            </li>-->
-<!--                                        </ul>-->
-<!--                                    </div>-->
-<!--                                    <div class="card-footer text-center">-->
-<!--                                        <a href="#" class="btn-primary-link">View Details</a>-->
-<!--                                    </div>-->
-<!--                                </div>-->
                             </div>
-                            <!-- ============================================================== -->
-                            <!-- ============================================================== -->
-                            <!-- end sales traffice country source  -->
-                            <!-- ============================================================== -->
                         </div>
                     </div>
                 </div>

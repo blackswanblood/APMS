@@ -18,7 +18,7 @@ class Arcade(models.Model):
 
 
 class Arcadehasgift(models.Model):
-    aname = models.ForeignKey(Arcade, models.DO_NOTHING, db_column='AName', blank=True, null=True, max_length=30)  # Field name made lowercase.
+    aname = models.ForeignKey(Arcade, models.DO_NOTHING,primary_key=True, db_column='AName', blank=True, max_length=30)  # Field name made lowercase.
     gid = models.ForeignKey('Gift1', models.DO_NOTHING, db_column='GID', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
