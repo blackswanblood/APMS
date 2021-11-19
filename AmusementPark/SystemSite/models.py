@@ -62,7 +62,7 @@ class Gift2(models.Model):
 
 
 class Machine(models.Model):
-    aname = models.ForeignKey(Arcade, models.DO_NOTHING, db_column='AName', blank=True, null=True)  # Field name made lowercase.
+    aname = models.ForeignKey(Arcade, models.DO_NOTHING,primary_key=True, db_column='AName', blank=True)  # Field name made lowercase.
     mname = models.CharField(db_column='MName', blank=True, null=True, max_length=30)  # Field name made lowercase.
     type = models.CharField(db_column='Type', blank=True, null=True, max_length=30)  # Field name made lowercase.
     highscores = models.IntegerField(db_column='Highscores', blank=True, null=True)  # Field name made lowercase.
@@ -91,7 +91,7 @@ class OperatorOperates2(models.Model):
 
 
 class Redeems(models.Model):
-    gid = models.ForeignKey(Gift1, models.DO_NOTHING, db_column='GID', blank=True, null=True)  # Field name made lowercase.
+    gid = models.ForeignKey(Gift1, models.DO_NOTHING, primary_key=True, db_column='GID', blank=True)  # Field name made lowercase.
     tid = models.ForeignKey('Tourist', models.DO_NOTHING, db_column='TID', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
@@ -130,7 +130,7 @@ class Technician(models.Model):
 
 
 class Ticketforride(models.Model):
-    ticketno = models.IntegerField(db_column='TicketNo', blank=True, null=True)  # Field name made lowercase.
+    ticketno = models.IntegerField(db_column='TicketNo', primary_key=True, blank=True)  # Field name made lowercase.
     ridename = models.ForeignKey(RideMaintains, models.DO_NOTHING, db_column='RideName', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
@@ -168,7 +168,7 @@ class Tourist(models.Model):
 
 
 class Touristbuysticket(models.Model):
-    tid = models.ForeignKey(Tourist, models.DO_NOTHING, db_column='TID', blank=True, null=True)  # Field name made lowercase.
+    tid = models.ForeignKey(Tourist, models.DO_NOTHING, primary_key=True, db_column='TID', blank=True)  # Field name made lowercase.
     ticketno = models.IntegerField(db_column='TicketNo', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
@@ -177,7 +177,7 @@ class Touristbuysticket(models.Model):
 
 
 class Touristplaysmachine(models.Model):
-    tid = models.ForeignKey(Tourist, models.DO_NOTHING, db_column='TID', blank=True, null=True)  # Field name made lowercase.
+    tid = models.ForeignKey(Tourist, models.DO_NOTHING, primary_key=True, db_column='TID', blank=True)  # Field name made lowercase.
     aname = models.CharField(db_column='AName', blank=True, null=True, max_length=30)  # Field name made lowercase.
     mname = models.CharField(db_column='MName', blank=True, null=True, max_length=30)  # Field name made lowercase.
     pointsearned = models.IntegerField(db_column='PointsEarned', blank=True, null=True)  # Field name made lowercase.
@@ -188,7 +188,7 @@ class Touristplaysmachine(models.Model):
 
 
 class Uses(models.Model):
-    wid = models.ForeignKey(Technician, models.DO_NOTHING, db_column='WID', blank=True, null=True)  # Field name made lowercase.
+    wid = models.ForeignKey(Technician, models.DO_NOTHING, primary_key=True, db_column='WID', blank=True)  # Field name made lowercase.
     eid = models.ForeignKey(Equipment, models.DO_NOTHING, db_column='EID', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
