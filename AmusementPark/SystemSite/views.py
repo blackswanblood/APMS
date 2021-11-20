@@ -1,29 +1,29 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
+from django.db import connection
 
-from .models import *
 
 def index (request):
-    tourist_list = selectTable(Tourist, 'Tourist')
-    staff_list = selectTable(Staff, 'Staff')
-    arcade_gift_list = selectTable(Arcadehasgift, 'ArcadeHasGift')
-    cashier_worksat_list = selectTable(CashierWorksat, 'Cashier_WorksAt')
-    equipment_list = selectTable(Equipment, 'Equipment')
-    gift1_list = selectTable(Gift1, 'Gift_1')
-    gift2_list = selectTable(Gift2, 'Gift_2')
-    machine_list = selectTable(Machine, 'Machine')
-    opop1_list = selectTable(OperatorOperates1, 'Operator_Operates_1')
-    opop2_list = selectTable(OperatorOperates2, 'Operator_Operates_2')
-    redeems_list = selectTable(Redeems, 'Redeems')
-    rideMaintains_list = selectTable(RideMaintains, 'Ride_Maintains')
-    technician_list = selectTable(Technician, 'Technician')
-    ticket1_list = selectTable(Ticket1, 'Ticket_1')
-    ticket2_list = selectTable(Ticket2, 'Ticket_2')
-    ticketforride_list = selectTable(Ticketforride, 'TicketForRide')
-    tbt_list = selectTable(Touristbuysticket, 'TouristBuysTicket')
-    tpm_list = selectTable(Touristplaysmachine, 'TouristPlaysMachine')
-    uses_list = selectTable(Uses, 'Uses')
+    tourist_list = view_table('Tourist')
+    staff_list = view_table('Staff')
+    arcade_gift_list = view_table('ArcadeHasGift')
+    cashier_worksat_list = view_table('Cashier_WorksAt')
+    equipment_list = view_table('Equipment')
+    gift1_list = view_table('Gift_1')
+    gift2_list = view_table('Gift_2')
+    machine_list = view_table( 'Machine')
+    opop1_list = view_table('Operator_Operates_1')
+    opop2_list = view_table('Operator_Operates_2')
+    redeems_list = view_table('Redeems')
+    rideMaintains_list = view_table('Ride_Maintains')
+    technician_list = view_table('Technician')
+    ticket1_list = view_table('Ticket_1')
+    ticket2_list = view_table('Ticket_2')
+    ticketforride_list = view_table('TicketForRide')
+    tbt_list = view_table('TouristBuysTicket')
+    tpm_list = view_table('TouristPlaysMachine')
+    uses_list = view_table('Uses')
 
 
 
@@ -62,23 +62,22 @@ def index (request):
     return HttpResponse(template.render(context, request))
     # return render(request, 'SystemSite/index.html')
 
-def viewAllTourists(request):
-    tourist_list = Tourist.objects.raw('SELECT * FROM Tourist')
-    template = loader.get_template('SystemSite/viewalltourists.html')
-    context = {
-        'tourist_list': tourist_list,
-    }
-    return HttpResponse(template.render(context, request))
-
-# def tableList(table, cmd):
-#     table_list = table.objects.raw ('SELECT * FROM ' + str(table))
-#     template = loader.get_template('SystemSite/index.html')
+# def viewAllTourists(request):
+#     tourist_list = Tourist.objects.raw('SELECT * FROM Tourist')
+#     template = loader.get_template('SystemSite/viewalltourists.html')
 #     context = {
-#         cmd : table_list
+#         'tourist_list': tourist_list,
 #     }
-#     return 0
+#     return HttpResponse(template.render(context, request))
 
-def selectTable(model, table):
-    return model.objects.raw('SELECT * FROM ' + table)
+#
+# def selectTable(model, table):
+#     return model.objects.raw('SELECT * FROM ' + table)
 
+
+def view_table(name):
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT * FROM " + name)
+        table = cursor.fetchall()
+    return table
 

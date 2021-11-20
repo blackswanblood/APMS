@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="../../static/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../static/vendor/charts/c3charts/c3.css">
     <link rel="stylesheet" href="../../static/vendor/fonts/flag-icon-css/flag-icon.min.css">
-    <title>Concept - Bootstrap 4 Admin Dashboard Template</title>
+    <title>APMS - a DB that is easy to manipulate</title>
 </head>
 
 <body>
@@ -29,27 +29,24 @@
         <!-- ============================================================== -->
         <div class="dashboard-header">
             <nav class="navbar navbar-expand-lg bg-white fixed-top">
-                <a class="navbar-brand" href="">System</a>
+                <a class="navbar-brand" href="">APMS</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-<!--                <div class="collapse navbar-collapse " id="navbarSupportedContent">-->
-<!--                    <ul class="navbar-nav ml-auto navbar-right-top">-->
-<!--                        </li>-->
-<!--                        <li class="nav-item dropdown nav-user">-->
-<!--                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../../static/images/avatar-1.jpg" alt="" class="user-avatar-md rounded-circle"></a>-->
-<!--                            <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">-->
-<!--                                <div class="nav-user-info">-->
-<!--                                    <h5 class="mb-0 text-white nav-user-name">John Abraham </h5>-->
-<!--                                    <span class="status"></span><span class="ml-2">Available</span>-->
-<!--                                </div>-->
-<!--                                <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>-->
-<!--                                <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>-->
-<!--                                <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>-->
-<!--                            </div>-->
-<!--                        </li>-->
-<!--                    </ul>-->
-<!--                </div>-->
+                <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto navbar-right-top">
+                        </li>
+                        <li class="nav-item dropdown nav-user">
+                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../../static/images/developers.png" alt="" class="user-avatar-md rounded-circle"></a>
+                            <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
+                                <div class="nav-user-info">
+                                    <h5 class="mb-0 text-white nav-user-name">Jack & Felix & Beren</h5>
+                                    <span class="status"></span><span class="ml-2">Developed by</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </nav>
         </div>
 
@@ -223,9 +220,7 @@
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
-                                <h1 class="pageheader-title">Amusement Park Manage System</h1>
-                                <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
-
+                                <h1 class="pageheader-title">Amusement Park Management System</h1>
                             </div>
                         </div>
                     </div>
@@ -326,13 +321,15 @@
                                                         <th class="border-0">Arcade Points</th>
                                                     </tr>
                                                 </thead>
-                                                {% for tourist in tourist_list %}
+
                                                 <tbody>
+                                                {% for tourist in tourist_list %}
                                                     <tr>
-                                                        <td>{{tourist.id}}</td>
-                                                        <td>{{tourist.name}}</td>
-                                                        <td>{{tourist.age}}</td>
-                                                        <td>{{tourist.arcadepoints}}</td>
+                                                        <td>{{tourist.0}}</td>
+                                                        <td>{{tourist.1}}</td>
+                                                        <td>{{tourist.2}}</td>
+                                                        <td>{{tourist.3}}</td>
+                                                    </tr>
                                                 </tbody>
                                                 {% endfor %}
                                             </table>
@@ -353,7 +350,7 @@
                                     <div class="card-body p-0">
                                         <div class="table-responsive">
                                             <table class="table">
-                                                {% if tourist_list %}
+                                                {% if staff_list %}
                                                 <thead class="bg-light">
                                                     <tr class="border-0">
                                                         <th class="border-0">WorkID</th>
@@ -363,8 +360,9 @@
                                                 {% for staff in staff_list %}
                                                 <tbody>
                                                     <tr>
-                                                        <td>{{staff.workid}}</td>
-                                                        <td>{{staff.name}}</td>
+                                                        <td>{{staff.0}}</td>
+                                                        <td>{{staff.1}}</td>
+                                                    </tr>
                                                 </tbody>
                                                 {% endfor %}
                                             </table>
@@ -395,8 +393,9 @@
                                                 {% for agl in arcade_gift_list %}
                                                 <tbody>
                                                     <tr>
-                                                        <td>{{agl.aname.name}}</td>
-                                                        <td>{{agl.gid.id}}</td>
+                                                        <td>{{agl.0}}</td>
+                                                        <td>{{agl.1}}</td>
+                                                    </tr>
                                                 </tbody>
                                                 {% endfor %}
                                             </table>
@@ -427,8 +426,9 @@
                                                 {% for cwl in cashier_worksat_list %}
                                                 <tbody>
                                                     <tr>
-                                                        <td>{{cwl.workid}}</td>
-                                                        <td>{{cwl.aname}}</td>
+                                                        <td>{{cwl.0}}</td>
+                                                        <td>{{cwl.1}}</td>
+                                                    </tr>
                                                 </tbody>
                                                 {% endfor %}
                                             </table>
@@ -458,7 +458,8 @@
                                                 {% for eq in equipment_list %}
                                                 <tbody>
                                                     <tr>
-                                                        <td>{{eq.id}}</td>
+                                                        <td>{{eq.0}}</td>
+                                                    </tr>
                                                 </tbody>
                                                 {% endfor %}
                                             </table>
@@ -489,8 +490,9 @@
                                                 {% for gift in gift1_list %}
                                                 <tbody>
                                                     <tr>
-                                                        <td>{{gift.id}}</td>
-                                                        <td>{{gift.category}}</td>
+                                                        <td>{{gift.0}}</td>
+                                                        <td>{{gift.1}}</td>
+                                                    </tr>
                                                 </tbody>
                                                 {% endfor %}
                                             </table>
@@ -521,8 +523,9 @@
                                                 {% for gift in gift2_list %}
                                                 <tbody>
                                                     <tr>
-                                                        <td>{{gift.category}}</td>
-                                                        <td>{{gift.pointsrequired}}</td>
+                                                        <td>{{gift.0}}</td>
+                                                        <td>{{gift.1}}</td>
+                                                    </tr>
                                                 </tbody>
                                                 {% endfor %}
                                             </table>
@@ -555,10 +558,11 @@
                                                 {% for machine in machine_list %}
                                                 <tbody>
                                                     <tr>
-                                                        <td>{{machine.aname.name}}</td>
-                                                        <td>{{machine.mname}}</td>
-                                                        <td>{{machine.type}}</td>
-                                                        <td>{{machine.highscores}}</td>
+                                                        <td>{{machine.0}}</td>
+                                                        <td>{{machine.1}}</td>
+                                                        <td>{{machine.2}}</td>
+                                                        <td>{{machine.3}}</td>
+                                                    </tr>
                                                 </tbody>
                                                 {% endfor %}
                                             </table>
@@ -589,8 +593,9 @@
                                                 {% for op in opop1_list %}
                                                 <tbody>
                                                     <tr>
-                                                        <td>{{op.workid.workid}}</td>
-                                                        <td>{{op.qualification}}</td>
+                                                        <td>{{op.0}}</td>
+                                                        <td>{{op.1}}</td>
+                                                    </tr>
                                                 </tbody>
                                                 {% endfor %}
                                             </table>
@@ -621,8 +626,9 @@
                                                 {% for op in opop2_list %}
                                                 <tbody>
                                                     <tr>
-                                                        <td>{{op.qualification}}</td>
-                                                        <td>{{op.rname.rname}}</td>
+                                                        <td>{{op.0}}</td>
+                                                        <td>{{op.1}}</td>
+                                                    </tr>
                                                 </tbody>
                                                 {% endfor %}
                                             </table>
@@ -653,8 +659,9 @@
                                                 {% for redeem in redeems_list %}
                                                 <tbody>
                                                     <tr>
-                                                        <td>{{redeem.gid.id}}</td>
-                                                        <td>{{redeem.tid.id}}</td>
+                                                        <td>{{redeem.0}}</td>
+                                                        <td>{{redeem.1}}</td>
+                                                    </tr>
                                                 </tbody>
                                                 {% endfor %}
                                             </table>
@@ -688,11 +695,12 @@
                                                 {% for rm in rideMaintains_list %}
                                                 <tbody>
                                                     <tr>
-                                                        <td>{{rm.rname}}</td>
-                                                        <td>{{rm.passengerlimit}}</td>
-                                                        <td>{{rm.workid.workid.workid}}</td>
-                                                        <td>{{rm.eid.id}}</td>
-                                                        <td>{{rm.timeofinspection}}</td>
+                                                        <td>{{rm.0}}</td>
+                                                        <td>{{rm.1}}</td>
+                                                        <td>{{rm.2}}</td>
+                                                        <td>{{rm.3}}</td>
+                                                        <td>{{rm.4}}</td>
+                                                    </tr>
                                                 </tbody>
                                                 {% endfor %}
                                             </table>
@@ -723,8 +731,9 @@
                                                 {% for technician in technician_list %}
                                                 <tbody>
                                                     <tr>
-                                                        <td>{{technician.workid.workid}}</td>
-                                                        <td>{{technician.qualification}}</td>
+                                                        <td>{{technician.0}}</td>
+                                                        <td>{{technician.1}}</td>
+                                                    </tr>
                                                 </tbody>
                                                 {% endfor %}
                                             </table>
@@ -755,8 +764,9 @@
                                                 {% for ticket in ticket1_list %}
                                                 <tbody>
                                                     <tr>
-                                                        <td>{{ticket.ticketno}}</td>
-                                                        <td>{{ticket.type}}</td>
+                                                        <td>{{ticket.0}}</td>
+                                                        <td>{{ticket.1}}</td>
+                                                    </tr>
                                                 </tbody>
                                                 {% endfor %}
                                             </table>
@@ -787,8 +797,9 @@
                                                 {% for ticket in ticket2_list %}
                                                 <tbody>
                                                     <tr>
-                                                        <td>{{ticket.type}}</td>
-                                                        <td>{{ticket.price}}</td>
+                                                        <td>{{ticket.0}}</td>
+                                                        <td>{{ticket.1}}</td>
+                                                    </tr>
                                                 </tbody>
                                                 {% endfor %}
                                             </table>
@@ -819,8 +830,9 @@
                                                 {% for tfr in ticketforride_list %}
                                                 <tbody>
                                                     <tr>
-                                                        <td>{{tfr.ticketno}}</td>
-                                                        <td>{{tfr.ridename.rname}}</td>
+                                                        <td>{{tfr.0}}</td>
+                                                        <td>{{tfr.1}}</td>
+                                                    </tr>
                                                 </tbody>
                                                 {% endfor %}
                                             </table>
@@ -851,8 +863,9 @@
                                                 {% for tbt in tbt_list %}
                                                 <tbody>
                                                     <tr>
-                                                        <td>{{tbt.tid.id}}</td>
-                                                        <td>{{tbt.ticketno}}</td>
+                                                        <td>{{tbt.0}}</td>
+                                                        <td>{{tbt.1}}</td>
+                                                    </tr>
                                                 </tbody>
                                                 {% endfor %}
                                             </table>
@@ -885,10 +898,11 @@
                                                 {% for tpm in tpm_list %}
                                                 <tbody>
                                                     <tr>
-                                                        <td>{{tpm.tid.id}}</td>
-                                                        <td>{{tpm.aname}}</td>
-                                                        <td>{{tpm.mname}}</td>
-                                                        <td>{{tpm.pointsearned}}</td>
+                                                        <td>{{tpm.0}}</td>
+                                                        <td>{{tpm.1}}</td>
+                                                        <td>{{tpm.2}}</td>
+                                                        <td>{{tpm.3}}</td>
+                                                    </tr>
                                                 </tbody>
                                                 {% endfor %}
                                             </table>
@@ -919,8 +933,9 @@
                                                 {% for use in uses_list %}
                                                 <tbody>
                                                     <tr>
-                                                        <td>{{use.wid.workid.workid}}</td>
-                                                        <td>{{use.eid.id}}</td>
+                                                        <td>{{use.0}}</td>
+                                                        <td>{{use.1}}</td>
+                                                    </tr>
                                                 </tbody>
                                                 {% endfor %}
                                             </table>
