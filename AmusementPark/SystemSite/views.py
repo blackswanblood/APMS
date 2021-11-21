@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.template import loader
 from django.db import connection
 from .forms import NameForm
@@ -82,9 +83,24 @@ def insertion(request):
     tourist_list = view_table('Tourist')
     staff_list = view_table('Staff')
     template = loader.get_template('SystemSite/insertion.html')
+
+    if request.method == 'POST':
+        form = NameForm(request.POST)
+        if form.is_valid():
+                ID = form.cleaned_data['ID']
+                Name = form.cleaned_data['Name']
+                Age = form.cleaned_data['Age']
+                Arcadept = form.cleaned_data['Arcadept']
+                with connection.cursor() as cursor:
+                    cursor.execute("INSERT INTO Tourist VALUES (%s,%s,%s,%s)", [ID ,Name, Age, Arcadept])
+                return HttpResponseRedirect('./')
+    else:
+        form = NameForm()
+    
     context = {
         'tourist_list': tourist_list,
-        'staff_list': staff_list
+        'staff_list': staff_list,
+        'form': form
     }
     return HttpResponse(template.render(context, request))
 
@@ -96,16 +112,4 @@ def view_table(name):
     return table
 
 
-def get_infoTourist(request):
-    with connection.cursor() as cursor:
-        if request.method == 'POST':
-            form = NameForm(request.POST)
-            if form.is_valid():
-                ID = form.cleaned_data['ID']
-                Age = form.cleaned_data['Age']
-                Name = form.cleaned_data['Name']
-                Arcadept = form.cleaned_data['Arcadept']
-                cursor.execute("INSERT INTO Tourist VALUES (%s,%s,%s,%s)", [ID ,Age,Name ,Arcadept])
-
-    return render(request, 'SystemSite/insertion.html', {'form': form})
 
