@@ -1,5 +1,3 @@
-DROP TABLE TouristBuysTicket;
-DROP TABLE Redeems;
 DROP TABLE TicketForRide;
 DROP TABLE ArcadeHasGift;
 DROP TABLE TouristPlaysMachine;
