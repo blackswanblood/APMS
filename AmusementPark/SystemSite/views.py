@@ -155,4 +155,41 @@ def view_table(name):
     return table
 
 
+# Division
+def division(request):
+    tourist_list = view_table('Tourist')
+    tpm_list = view_table('TouristPlaysMachine')
+    machine_list = view_table('Machine')
+    equipment_list = view_table('Equipment')
+
+    # Join technician names to Uses table in order to observe more clearly
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT DISTINCT S.WorkID, S.Name, U.EID FROM Staff S, Uses U, Equipment E WHERE S.WorkID = U.WID AND E.ID=U.EID")
+        tuses_list = cursor.fetchall()
+
+    result = " "
+    if request.method == 'POST':
+        with connection.cursor() as cursor:
+            user_selection = request.POST.get("option")
+            if user_selection=="option1":
+                cursor.execute("SELECT Name FROM Tourist T WHERE NOT EXISTS(SELECT M.MName FROM Machine M WHERE NOT EXISTS(SELECT TM.TID FROM TouristPlaysMachine TM WHERE M.MName=TM.MName AND TM.TID=T.ID))")
+                result = cursor.fetchall()
+                # print(len(result))
+            if user_selection=="option2":
+                cursor.execute("SELECT Name FROM Staff S WHERE NOT EXISTS(SELECT E.ID FROM Equipment E WHERE NOT EXISTS(SELECT U.WID FROM Uses U WHERE U.EID=E.ID AND U.WID=S.WorkID))")
+                result = cursor.fetchall()
+    context = {
+        'tourist_list': tourist_list,
+        'machine_list': machine_list,
+        'tpm_list': tpm_list,
+        'equipment_list': equipment_list,
+        'tuses_list': tuses_list,
+        'result' : result
+    }
+    template = loader.get_template('SystemSite/division.html')
+    return HttpResponse(template.render(context, request))
+
+
+
+
 

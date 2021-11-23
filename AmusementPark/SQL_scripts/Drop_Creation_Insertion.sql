@@ -403,8 +403,24 @@ INSERT INTO TouristPlaysMachine (TID, AName, MName, PointsEarned)
 VALUES (1125, 'Come to play', 'Hoop', 10);
 INSERT INTO TouristPlaysMachine (TID, AName, MName, PointsEarned)
 VALUES (1141, 'FunTime', 'Resident Evil', 8);
-
-
+INSERT INTO TouristPlaysMachine (TID, AName, MName, PointsEarned)
+VALUES (1111, 'Come to play', 'Hoop', 8);
+INSERT INTO TouristPlaysMachine (TID, AName, MName, PointsEarned)
+VALUES (1111, 'Saga', 'MotorRace', 10);
+INSERT INTO TouristPlaysMachine (TID, AName, MName, PointsEarned)
+VALUES (1111, 'Saga', 'CraneMachine', 13);
+INSERT INTO TouristPlaysMachine (TID, AName, MName, PointsEarned)
+VALUES (1111, 'FunTime', 'Resident Evil', 20);
+INSERT INTO TouristPlaysMachine (TID, AName, MName, PointsEarned)
+VALUES (1112, 'Max!!', 'CarRace',15);
+INSERT INTO TouristPlaysMachine (TID, AName, MName, PointsEarned)
+VALUES (1112, 'Saga', 'MotorRace',10);
+INSERT INTO TouristPlaysMachine (TID, AName, MName, PointsEarned)
+VALUES (1112, 'Come to play', 'Hoop',30);
+INSERT INTO TouristPlaysMachine (TID, AName, MName, PointsEarned)
+VALUES (1112, 'FunTime', 'Resident Evil',15);
+INSERT INTO TouristPlaysMachine (TID, AName, MName, PointsEarned)
+VALUES (1112, 'Saga', 'CarRace',10);
 
 INSERT INTO Cashier_WorksAt(WorkID, AName)
 VALUES (1, 'Saga');
@@ -458,6 +474,12 @@ INSERT INTO Uses (WID, EID) VALUES (102, 11);
 INSERT INTO Uses (WID, EID) VALUES (103, 12);
 INSERT INTO Uses (WID, EID) VALUES (104, 13);
 INSERT INTO Uses (WID, EID) VALUES (105, 14);
+INSERT INTO Uses (WID, EID) VALUES (100, 11);
+INSERT INTO Uses (WID, EID) VALUES (100, 12);
+INSERT INTO Uses (WID, EID) VALUES (100, 13);
+INSERT INTO Uses (WID, EID) VALUES (100, 14);
+INSERT INTO Uses (WID, EID) VALUES (100, 15);
+
 
 
 

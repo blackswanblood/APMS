@@ -7,5 +7,4 @@ from .views import index
 urlpatterns =[
     url(r'^$', views.index, name = "index"),
     url(r'^insertion.html/$', views.insertion),
-    url(r'^deletion.html/$', views.deletion)
 ]
