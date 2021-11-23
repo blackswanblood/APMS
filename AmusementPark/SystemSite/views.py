@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from django.template import loader
 from django.db import connection
 from .forms import NameForm
+from .forms import MaintainanceForm
 
 
 def index (request):
@@ -103,6 +104,56 @@ def insertion(request):
         'form': form
     }
     return HttpResponse(template.render(context, request))
+
+# Update
+def update(request):
+    cashier_worksat_list = view_table('Cashier_WorksAt')
+    arcade_list = view_table('Arcade')
+    rideMaintains_list = view_table('Ride_Maintains')
+    template = loader.get_template('SystemSite/update.html')
+
+    if request.method == 'POST' and "Cashier ID" in request.POST:
+        cashierID = request.POST['Cashier ID']
+        arcade = request.POST['Arcade Name']
+        with connection.cursor() as cursor:
+            cursor.execute("UPDATE Cashier_WorksAt \
+                            SET AName = %s  \
+                            WHERE WorkID = %s", [arcade, cashierID])
+        return HttpResponseRedirect('./')
+
+    elif request.method == 'POST' and "RideName" in request.POST:
+        form = MaintainanceForm(request.POST)
+        if form.is_valid():
+                RideName = form.cleaned_data['RideName']
+                WorkID = form.cleaned_data['WorkID']
+                EquipmentID = form.cleaned_data['EquipmentID']
+                TimeofInspection = form.cleaned_data['TOI']
+
+                with connection.cursor() as cursor:
+                    cursor.execute("SELECT WorkID, EID FROM Ride_Maintains \
+                                    WHERE RName = %s", [RideName])
+                    (oldWorkID, oldEquipmentID) = cursor.fetchall()[0]
+
+                    cursor.execute("UPDATE Ride_Maintains \
+                        SET WorkID = %s, EID = %s, TimeofInspection = date(%s)  \
+                        WHERE RName = %s", [WorkID, EquipmentID, TimeofInspection, RideName])
+
+                    cursor.execute("UPDATE Uses \
+                        SET WID = %s, EID = %s  \
+                        WHERE WID = %s AND EID = %s ", [WorkID, EquipmentID, oldWorkID, oldEquipmentID])
+                return HttpResponseRedirect('./')
+
+    else: 
+        form = MaintainanceForm()
+    
+    context = {
+        'cashier_worksat_list': cashier_worksat_list,
+        'arcade_list': arcade_list,
+        'rideMaintains_list': rideMaintains_list,
+        'form' : form
+    }
+    return HttpResponse(template.render(context, request))
+
 
 
 def view_table(name):

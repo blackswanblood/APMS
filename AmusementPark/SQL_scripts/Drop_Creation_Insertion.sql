@@ -324,17 +324,17 @@ INSERT INTO Technician (WorkID, Qualification)
 VALUES (105, 'Qualified to maintain the Jungle cruise');
 
 INSERT INTO Ride_Maintains(RName, PassengerLimit, WorkID, EID, TimeofInspection)
-VALUES ('Roller-coaster', 40, 102, 11, date('2019-01-01','YYYY-MM-DD'));
+VALUES ('Roller-coaster', 40, 102, 11, date('2019-01-01'));
 INSERT INTO Ride_Maintains(RName, PassengerLimit, WorkID, EID, TimeofInspection)
-VALUES ('Carousel', 40, 103, 12, date('2019-01-01','YYYY-MM-DD'));
+VALUES ('Carousel', 40, 103, 12, date('2019-01-01'));
 INSERT INTO Ride_Maintains(RName, PassengerLimit, WorkID, EID, TimeofInspection)
-VALUES ('Flume ride', 50, 100, 10, date('2019-01-01','YYYY-MM-DD'));
+VALUES ('Flume ride', 50, 100, 10, date('2019-01-01'));
 INSERT INTO Ride_Maintains(RName, PassengerLimit, WorkID, EID, TimeofInspection)
-VALUES ('Ferris wheel', 50, 101, 10, date('2019-10-01','YYYY-MM-DD'));
+VALUES ('Ferris wheel', 50, 101, 10, date('2019-10-01'));
 INSERT INTO Ride_Maintains(RName, PassengerLimit, WorkID, EID, TimeofInspection)
-VALUES ('Haunted Mansion', 15, 104, 13, date('2019-01-01','YYYY-MM-DD'));
+VALUES ('Haunted Mansion', 15, 104, 13, date('2019-01-01'));
 INSERT INTO Ride_Maintains(RName, PassengerLimit, WorkID, EID, TimeofInspection)
-VALUES ('Jungle cruise', 15, 105, 13, date('2019-09-21','YYYY-MM-DD'));
+VALUES ('Jungle cruise', 15, 105, 13, date('2019-09-21'));
 
 INSERT INTO TicketForRide (TicketNo, RideName)
 VALUES (125, 'Carousel');
