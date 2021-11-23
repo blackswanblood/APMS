@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.template import loader
 from django.db import connection
-from .forms import NameForm
+from .forms import *
 
 
 def index (request):
@@ -26,6 +26,7 @@ def index (request):
     tbt_list = view_table('TouristBuysTicket')
     tpm_list = view_table('TouristPlaysMachine')
     uses_list = view_table('Uses')
+    arcade_list = view_table('Arcade')
 
 
 
@@ -55,6 +56,7 @@ def index (request):
         'tbt_list': tbt_list,
         'tpm_list' : tpm_list,
         'uses_list' : uses_list,
+        'arcade_list': arcade_list,
 
         'tourist_count': tourist_count,
         'staff_count' : staff_count,
@@ -85,7 +87,8 @@ def insertion(request):
     template = loader.get_template('SystemSite/insertion.html')
 
     if request.method == 'POST':
-        form = NameForm(request.POST)
+        form = insertTouristForm(request.POST)
+        form1 = insertStaffForm(request.POST)
         if form.is_valid():
                 ID = form.cleaned_data['ID']
                 Name = form.cleaned_data['Name']
@@ -94,15 +97,55 @@ def insertion(request):
                 with connection.cursor() as cursor:
                     cursor.execute("INSERT INTO Tourist VALUES (%s,%s,%s,%s)", [ID ,Name, Age, Arcadept])
                 return HttpResponseRedirect('./')
+        if form1.is_valid():
+                WorkID = form1.cleaned_data['WorkID']
+                Name = form1.cleaned_data['Name']
+                with connection.cursor() as cursor:
+                    cursor.execute("INSERT INTO Staff VALUES (%s,%s)", [WorkID ,Name])
+                return HttpResponseRedirect('./')
     else:
-        form = NameForm()
+        form = insertTouristForm()
+        form1 = insertStaffForm()
     
     context = {
         'tourist_list': tourist_list,
         'staff_list': staff_list,
-        'form': form
+        'form': form,
+        'form1': form1
     }
     return HttpResponse(template.render(context, request))
+
+# Deletion
+def deletion(request):
+    arcade_list = view_table('Arcade')
+    machine_list = view_table('Machine')
+    template = loader.get_template('SystemSite/deletion.html')
+
+    if request.method == 'POST':
+        formA = deleteArcadeForm(request.POST)
+        formM = deleteMachineForm(request.POST)
+        if formA.is_valid():
+                aName = formA.cleaned_data['ArcadeName']
+                with connection.cursor() as cursor:
+                    cursor.execute("DELETE FROM Arcade WHERE Name = %s", [aName])
+                return HttpResponseRedirect('./')
+        if formM.is_valid():
+                mName = formM.cleaned_data['MachineName']
+                with connection.cursor() as cursor:
+                    cursor.execute("DELETE FROM Machine WHERE MName = %s", [mName])
+                return HttpResponseRedirect('./')
+    else:
+        formA = deleteArcadeForm()
+        formM = deleteMachineForm()
+    
+    context = {
+        'arcade_list': arcade_list,
+        'machine_list': machine_list,
+        'formA': formA,
+        'formM': formM
+    }
+    return HttpResponse(template.render(context, request))
+
 
 
 def view_table(name):

@@ -80,31 +80,27 @@
                             <!-- Tourist List -->
                             <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
                                 <div class="card">
-                                    <h5 class="card-header">Tourist List</h5>
+                                    <h5 class="card-header">Arcade List</h5>
                                     <div class="card-body p-0">
                                         <div class="table-responsive">
                                             <table class="table">
-                                                {% if tourist_list %}
+                                                {% if arcade_list %}
                                                 <thead class="bg-light">
                                                     <tr class="border-0">
-                                                        <th class="border-0">ID</th>
-                                                        <th class="border-0">Name</th>
-                                                        <th class="border-0">Age </th>
-                                                        <th class="border-0">Arcade Points</th>
+                                                        <th class="border-0">Arcade Name</th>
+                                                        <th class="border-0">Location</th>
                                                     </tr>
                                                 </thead>
-                                                {% for tourist in tourist_list %}
+                                                {% for arcade in arcade_list %}
                                                 <tbody>
                                                     <tr>
-                                                        <td>{{tourist.0}}</td>
-                                                        <td>{{tourist.1}}</td>
-                                                        <td>{{tourist.2}}</td>
-                                                        <td>{{tourist.3}}</td>
+                                                        <td>{{arcade.0}}</td>
+                                                        <td>{{arcade.1}}</td>
                                                 </tbody>
                                                 {% endfor %}
                                             </table>
                                             {% else %}
-                                            <p>No tourists found.</p>
+                                            <p>No arcades found.</p>
                                             {% endif %}
                                         </div>
                                     </div>
@@ -115,12 +111,12 @@
                         <!-- ============================================================== -->
                         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                             <div class="card">
-                                <h5 class="card-header">Insert a tourist</h5>
+                                <h5 class="card-header">Delete an arcade</h5>
                                 <div class="card-body">
                                     <form action="./"  method="post">
                                         {% csrf_token %}
                                         <table>
-                                            {{form.as_table}}
+                                            {{formA.as_table}}
                                         </table>
                                         </div>
                                             <div class="col-sm-6 pl-3">
@@ -136,27 +132,31 @@
 
                             <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
                                 <div class="card">
-                                    <h5 class="card-header">Staff List</h5>
+                                    <h5 class="card-header">Machine List</h5>
                                     <div class="card-body p-0">
                                         <div class="table-responsive">
                                             <table class="table">
-                                                {% if staff_list %}
+                                                {% if machine_list %}
                                                 <thead class="bg-light">
                                                     <tr class="border-0">
-                                                        <th class="border-0">WorkID</th>
-                                                        <th class="border-0">Name</th>
+                                                        <th class="border-0">Arcade Name</th>
+                                                        <th class="border-0">Machine Name</th>
+                                                        <th class="border-0">Type</th>
+                                                        <th class="border-0">Highscores</th>
                                                     </tr>
                                                 </thead>
-                                                {% for staff in staff_list %}
+                                                {% for machine in machine_list %}
                                                 <tbody>
                                                     <tr>
-                                                        <td>{{staff.0}}</td>
-                                                        <td>{{staff.1}}</td>
+                                                        <td>{{machine.0}}</td>
+                                                        <td>{{machine.1}}</td>
+                                                        <td>{{machine.2}}</td>
+                                                        <td>{{machine.3}}</td>
                                                 </tbody>
                                                 {% endfor %}
                                             </table>
                                             {% else %}
-                                            <p>No staffs found.</p>
+                                            <p>No machines found.</p>
                                             {% endif %}
                                         </div>
                                     </div>
@@ -168,12 +168,12 @@
                         <!-- ============================================================== -->
                         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                             <div class="card">
-                                <h5 class="card-header">Insert a staff</h5>
+                                <h5 class="card-header">Delete a machine</h5>
                                 <div class="card-body">
                                     <form action="./"  method="post">
                                         {% csrf_token %}
                                         <table>
-                                            {{form1.as_table}}
+                                            {{formM.as_table}}
                                         </table>
                                         </div>
                                             <div class="col-sm-6 pl-3">

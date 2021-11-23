@@ -118,8 +118,10 @@ CREATE TABLE ArcadeHasGift (
     AName CHAR(30),
     GID INTEGER,
     PRIMARY KEY (AName, GID),
-    FOREIGN KEY (AName) REFERENCES Arcade(Name),
-    FOREIGN KEY (GID) REFERENCES Gift_1(ID)
+    FOREIGN KEY (GID) REFERENCES Gift_1(ID),
+    FOREIGN KEY (AName) REFERENCES Arcade(Name)
+        ON DELETE CASCADE
+    
 );
 
 CREATE TABLE Machine (
@@ -140,13 +142,14 @@ CREATE TABLE TouristPlaysMachine (
     PRIMARY KEY (TID, AName, MName),
     FOREIGN KEY (TID) REFERENCES Tourist(ID),
     FOREIGN KEY (AName, MName) REFERENCES Machine(AName, MName)
+        ON DELETE CASCADE
 );
 
 
 
 CREATE TABLE Cashier_WorksAt (
     WorkID INTEGER PRIMARY KEY, 
-    AName CHAR(30) NOT NULL,
+    AName CHAR(30),
     FOREIGN KEY (WorkID) REFERENCES Staff
         ON DELETE CASCADE,
     FOREIGN KEY (AName) REFERENCES Arcade
