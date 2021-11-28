@@ -195,12 +195,54 @@ def update(request):
     }
     return HttpResponse(template.render(context, request))
 
+# Selection 
+def selection(request):
+    tourist_list = view_table('Tourist')
+    operator_list = view_table_natural_join(['Operator_Operates_1', 'Operator_Operates_2'])
+    template = loader.get_template('SystemSite/selection.html')
+    
+    context = {
+        'tourist_list': tourist_list,
+        'operator_list': operator_list,
+        'resultTourist' : "",
+        'resultOperator' : ""
+    }
+
+    if request.method == 'POST' and 'lowerbound' in request.POST:
+        lower_bound = request.POST['lowerbound']
+        upper_bound = request.POST['upperbound']
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT * FROM Tourist \
+                            WHERE ArcadePoints >= %s AND ArcadePoints <= %s", [lower_bound, upper_bound])
+            resultTourist = cursor.fetchall()
+            context["resultTourist"] = resultTourist
+        return HttpResponse(template.render(context, request))
+    
+    if request.method == 'POST' and 'qualification' in request.POST:
+        qualification = request.POST['qualification']
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT WorkID, op1.Qualification, RName FROM Operator_Operates_1 op1, Operator_Operates_2 op2 \
+                            WHERE op1.Qualification = op2.Qualification  \
+                            AND op1.Qualification LIKE %s", ["%" + qualification + "%"])
+            resultOperator = cursor.fetchall()
+            context["resultOperator"] = resultOperator
+        return HttpResponse(template.render(context, request))
+    
+
+    return HttpResponse(template.render(context, request))
 
 
 
 def view_table(name):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM " + name)
+        table = cursor.fetchall()
+    return table
+
+def view_table_natural_join(names):
+    with connection.cursor() as cursor:
+        joinedstr = " NATURAL JOIN ".join(names)
+        cursor.execute("SELECT * FROM " + joinedstr)
         table = cursor.fetchall()
     return table
 
