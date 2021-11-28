@@ -238,6 +238,16 @@ INSERT INTO Gift_1 (ID, Category)
 VALUES (20, 'middle-size stuffed toys');
 INSERT INTO Gift_1 (ID, Category)
 VALUES (25, 'books');
+INSERT INTO Gift_1 (ID, Category)
+VALUES (26, 'books');
+INSERT INTO Gift_1 (ID, Category)
+VALUES (10, 'gaming console');
+INSERT INTO Gift_1 (ID, Category)
+VALUES (100, 'fashion accessories');
+INSERT INTO Gift_1 (ID, Category)
+VALUES (101, 'fashion accessories');
+INSERT INTO Gift_1 (ID, Category)
+VALUES (102, 'fashion accessories');
 
 
 
@@ -283,6 +293,12 @@ INSERT INTO Ticket_1 (TicketNo, Type)
 VALUES (200, 'Combo_2');
 INSERT INTO Ticket_1 (TicketNo, Type)
 VALUES (12, 'Ferris wheel only');
+INSERT INTO Ticket_1 (TicketNo, Type)
+VALUES (100, 'Combo_1');
+INSERT INTO Ticket_1 (TicketNo, Type)
+VALUES (13, 'Ferris wheel only');
+INSERT INTO Ticket_1 (TicketNo, Type)
+VALUES (14, 'Ferris wheel only');
 
 
 

@@ -164,20 +164,26 @@ def division(request):
 
     # Join technician names to Uses table in order to observe more clearly
     with connection.cursor() as cursor:
-        cursor.execute("SELECT DISTINCT S.WorkID, S.Name, U.EID FROM Staff S, Uses U, Equipment E WHERE S.WorkID = U.WID AND E.ID=U.EID")
+        cursor.execute("SELECT DISTINCT S.WorkID, S.Name, U.EID FROM Staff S, Uses U, Equipment E "
+                       "WHERE S.WorkID = U.WID AND E.ID=U.EID")
         tuses_list = cursor.fetchall()
 
-    result = " "
+    result = ""
     if request.method == 'POST':
         with connection.cursor() as cursor:
             user_selection = request.POST.get("option")
             if user_selection=="option1":
-                cursor.execute("SELECT Name FROM Tourist T WHERE NOT EXISTS(SELECT M.MName FROM Machine M WHERE NOT EXISTS(SELECT TM.TID FROM TouristPlaysMachine TM WHERE M.MName=TM.MName AND TM.TID=T.ID))")
+                cursor.execute("SELECT Name FROM Tourist T WHERE NOT EXISTS"
+                                "(SELECT M.MName FROM Machine M WHERE NOT EXISTS"
+                               "(SELECT TM.TID FROM TouristPlaysMachine TM WHERE M.MName=TM.MName AND TM.TID=T.ID))")
                 result = cursor.fetchall()
-                # print(len(result))
+
             if user_selection=="option2":
-                cursor.execute("SELECT Name FROM Staff S WHERE NOT EXISTS(SELECT E.ID FROM Equipment E WHERE NOT EXISTS(SELECT U.WID FROM Uses U WHERE U.EID=E.ID AND U.WID=S.WorkID))")
+                cursor.execute("SELECT Name FROM Staff S WHERE NOT EXISTS"
+                               "(SELECT E.ID FROM Equipment E WHERE NOT EXISTS"
+                               "(SELECT U.WID FROM Uses U WHERE U.EID=E.ID AND U.WID=S.WorkID))")
                 result = cursor.fetchall()
+
     context = {
         'tourist_list': tourist_list,
         'machine_list': machine_list,
@@ -187,6 +193,57 @@ def division(request):
         'result' : result
     }
     template = loader.get_template('SystemSite/division.html')
+    return HttpResponse(template.render(context, request))
+
+# Aggregation by Having
+def aggregation_having(request):
+
+    with connection.cursor() as cursor:
+        # Join the Ticket_1 and Ticket_2 table
+        cursor.execute("SELECT DISTINCT T1.TicketNo, T1.Type, T2.Price "
+                       "FROM Ticket_1 T1, Ticket_2 T2 "
+                       "WHERE T1.Type=T2.Type")
+        tickets = cursor.fetchall()
+
+        # Join the Gift_1 and Gift_2 table
+        cursor.execute("SELECT DISTINCT G1.ID, G1.Category, G2.PointsRequired "
+                       "FROM Gift_1 G1, GIFT_2 G2 "
+                       "WHERE G1.Category=G2.Category")
+        gifts = cursor.fetchall()
+
+
+
+    result_1 =" "
+    result_2 =" "
+    if request.method == 'POST':
+        with connection.cursor() as cursor:
+            user_selection = request.POST.get("option")
+            if user_selection=="option1":
+                cursor.execute("DROP VIEW IF EXISTS Ticket")
+                cursor.execute("CREATE View Ticket(TicketNo, Type, Price) AS SELECT T1.TicketNo, T1.Type, T2.Price "
+                                "FROM Ticket_1 T1, Ticket_2 T2 WHERE T1.Type=T2.Type")
+                cursor.execute("SELECT Type,  Price, Count(*) FROM Ticket GROUP BY Type HAVING Count(*)>1")
+                result_2 = " "
+                result_1 = cursor.fetchall()
+
+            if user_selection=="option2":
+                cursor.execute("DROP VIEW IF EXISTS Gift")
+                cursor.execute("CREATE View Gift(GID, Category, PtsRequired) AS "
+                               "SELECT G1.ID, G1.Category, G2. PointsRequired FROM Gift_1 G1, Gift_2 G2 "
+                               "WHERE G1.Category=G2.Category")
+                cursor.execute("SELECT Category, PtsRequired, Count(*) FROM Gift WHERE PtsRequired>=500 GROUP BY Category HAVING Count(*)>2")
+                result_1 = " "
+                result_2 = cursor.fetchall()
+                print(len(result_2))
+
+    context = {
+        'tickets': tickets,
+        'gifts': gifts,
+        'result_1': result_1,
+        'result_2': result_2
+    }
+
+    template = loader.get_template('SystemSite/aggregation_having.html')
     return HttpResponse(template.render(context, request))
 
 
