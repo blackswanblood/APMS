@@ -9,5 +9,6 @@ urlpatterns =[
     url(r'^insertion.html/$', views.insertion),
     url(r'^update.html/$', views.update),
     url(r'^deletion.html/$', views.deletion),
-    url(r'^selection.html/$', views.selection)
+    url(r'^selection.html/$', views.selection),
+    url(r'^nested_aggregation.html/$', views.nested_aggregation)
 ]

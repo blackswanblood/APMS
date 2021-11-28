@@ -78,29 +78,31 @@
 
        
                         <!-- Cashier List -->
-                        <div class="row" id="cashierWorkAtList">
+                        <div class="row" id="TouristList">
                             <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <h5 class="card-header">Tourist List</h5>
                                     <div class="card-body p-0">
                                         <div class="table-responsive">
                                             <table class="table">
-                                                {% if tourist_list %}
+                                                {% if tourist_joined_list %}
                                                 <thead class="bg-light">
                                                     <tr class="border-0">
-                                                        <th class="border-0">ID</th>
+                                                        <th class="border-0">Tourist ID</th>
                                                         <th class="border-0">Name</th>
-                                                        <th class="border-0">Age </th>
-                                                        <th class="border-0">Arcade Points</th>
+                                                        <th class="border-0">Arcade Points </th>
+                                                        <th class="border-0">Ticket No</th>
+                                                        <th class="border-0">Ticket Type</th>
                                                     </tr>
                                                 </thead>
-                                                {% for cwl in tourist_list %}
+                                                {% for cwl in tourist_joined_list %}
                                                 <tbody>
                                                     <tr>
                                                         <td>{{cwl.0}}</td>
                                                         <td>{{cwl.1}}</td>
                                                         <td>{{cwl.2}}</td>
-                                                        <td>{{cwl.3}}</td>                                                        
+                                                        <td>{{cwl.3}}</td>      
+                                                        <td>{{cwl.4}}</td>                                                     
                                                     </tr>
                                                 </tbody>
                                                 {% endfor %}
@@ -119,20 +121,27 @@
                         <div class="row">
                             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                 <div class="card">
-                                    <h5 class="card-header">Select Tourist by Arcade Points</h5>
+                                    <h5 class="card-header">Explore Tourist Arcade Point Statistics</h5>
                                     <div class="card-body">
+                                        <p>Find tourist arcade point averages grouped by type of ticket purchased in relation to entire tourist group.</p>
                                         <form action="./" method="post">
                                             {% csrf_token %}
-                                            
-                                            <div class="form-group">
-                                                <label for="lowerbound">Arcade points >= </label>
-                                                <input type="number" id="lowerbound" name="lowerbound"><br>
-                                                </input>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="upperbound">Arcade points &lt= </label>
-                                                <input type="number" id="upperbound" name="upperbound"><br>
-                                                </input>
+                                        
+                                            <div class="form-group" display="inline-block">
+                                                <label for="inputUserName">Find groups that have arcade point averages  </label><br>
+                                                {% if selection == "gt" %}
+                                                <select name="Relation">
+                                                    <option value="gt">Greater than</option>
+                                                    <option value="lt">Less than</option>
+                                                </select>
+                                                {% else %}
+                                                <select name="Relation">
+                                                    <option value="lt">Less than</option>
+                                                    <option value="gt">Greater than</option>
+                                                </select>
+                                                {% endif %} 
+                                                <label for="inputUserName">the average of all tourists</label>
+
                                             </div>
                                                 <div class="col-sm-6 pl-0">
                                                     <p>
@@ -146,7 +155,7 @@
                             </div>
                         </div>
                         
-                        {% if resultTourist %}
+                        {% if result %}
                         <div class="row">
                             <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                                 <div class="card">  
@@ -154,16 +163,15 @@
                                     <div class="card-body">
                                         <div class="table-responsive">
                                             <table class="table">
-                                                {% if resultTourist %}
+                                                {% if result %}
                                                 <thead class="bg-light">
                                                     <tr class="border-0">
-                                                        <th class="border-0">ID</th>
-                                                        <th class="border-0">Name</th>
-                                                        <th class="border-0">Age </th>
-                                                        <th class="border-0">Arcade Points</th>
+                                                        <th class="border-0">Ticket Type</th>
+                                                        <th class="border-0">Average Arcade Points</th>
+                                                        <th class="border-0">Count</th>
                                                     </tr>
                                                 </thead>
-                                                {% for cwl in resultTourist %}
+                                                {% for cwl in result %}
                                                 <tbody>
                                                     <tr>
                                                         <td>{{cwl.0}}</td>
@@ -183,104 +191,12 @@
                         </div>
                         {%endif%}
 
-                        <!-- Ride Maintains List -->
-                        <div class="row" id="operatorList">
-                            <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
-                                <div class="card">
-                                    <h5 class="card-header">Operator List</h5>
-                                    <div class="card-body p-0">
-                                        <div class="table-responsive">
-                                            <table class="table">
-                                                {% if operator_list %}
-                                                <thead class="bg-light">
-                                                    <tr class="border-0">
-                                                        <th class="border-0">Work ID</th>
-                                                        <th class="border-0">Qualifications</th>
-                                                        <th class="border-0">Assigned Ride</th>
-                                                    </tr>
-                                                </thead>
-                                                {% for rm in operator_list %}
-                                                <tbody>
-                                                    <tr>
-                                                        <td>{{rm.0}}</td>
-                                                        <td>{{rm.1}}</td>
-                                                        <td>{{rm.2}}</td>
-                                                    </tr>
-                                                </tbody>
-                                                {% endfor %}
-                                            </table>
-                                            {% else %}
-                                            <p>No result found.</p>
-                                            {% endif %}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                             <!-- ============================================================== -->
                             <!-- end recent orders  -->
                         <!-- Insertion -->
                         <!-- ============================================================== -->
-                        <div class="row">
-                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
-                                <div class="card">
-                                    <h5 class="card-header">Search Operator by Qualification</h5>
-                                    <div class="card-body">
-                                        <form action="./" method="post">
-                                            {% csrf_token %}
-                                            
-                                            <div class="form-group">
-                                                <label for="qualification">Search for operators by keyword in qualification: </label>
-                                                <input type="text" id="qualification" name="qualification"><br>
-                                                </input>
-                                            </div>
 
-                                                <div class="col-sm-6 pl-0">
-                                                    <p>
-                                                        <button type="submit" class="btn btn-space btn-primary">Submit</button>
-                                                    </p>
-                                                </div>
-                                            
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        {% if resultOperator %}
-                        <div class="row">
-                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
-                                <div class="card">  
-                                    <h5 class="card-header">Results: </h5>
-                                    <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table class="table">
-                                                {% if resultOperator %}
-                                                <thead class="bg-light">
-                                                    <tr class="border-0">
-                                                        <th class="border-0">WorkID</th>
-                                                        <th class="border-0">Qualification</th>
-                                                        <th class="border-0">Assigned Ride </th>
-                                                    </tr>
-                                                </thead>
-                                                {% for cwl in resultOperator %}
-                                                <tbody>
-                                                    <tr>
-                                                        <td>{{cwl.0}}</td>
-                                                        <td>{{cwl.1}}</td>
-                                                        <td>{{cwl.2}}</td>                                                      
-                                                    </tr>
-                                                </tbody>
-                                                {% endfor %}
-                                                {% endif %}
-                                            </table>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {%endif%}
 
                     </div>
                 </div>

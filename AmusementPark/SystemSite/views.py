@@ -231,7 +231,45 @@ def selection(request):
 
     return HttpResponse(template.render(context, request))
 
+def nested_aggregation(request):
+    tourist_joined_list = []
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT t.ID, t.Name, t.ArcadePoints, tb.TicketNo, t1.Type  \
+                       FROM Tourist t, TouristBuysTicket tb, Ticket_1 t1 \
+                       WHERE t.ID = tb.TID AND tb.TicketNo = t1.TicketNo")
+        tourist_joined_list = cursor.fetchall()
+    
+    template = loader.get_template('SystemSite/nested_aggregation.html')
+    
+    context = {
+        'tourist_joined_list': tourist_joined_list,
+        'selection': "gt",
+        'result' : ""
+    }
 
+    if request.method == 'POST':
+        with connection.cursor() as cursor:
+            if request.POST['Relation'] == "gt":
+                context['selection'] = "gt"
+                cursor.execute("""SELECT t1.Type, avg(t.ArcadePoints), count(*)   \
+                            FROM Tourist t, TouristBuysTicket tb, Ticket_1 t1 \
+                            WHERE t.ID = tb.TID AND tb.TicketNo = t1.TicketNo  \
+                            GROUP BY t1.Type \
+                            HAVING avg(t.ArcadePoints) > (SELECT avg(ArcadePoints) \
+                                                        FROM Tourist)""")
+            elif request.POST['Relation'] == "lt":
+                context['selection'] = "lt"
+                cursor.execute("""SELECT t1.Type, avg(t.ArcadePoints), count(*)   \
+                            FROM Tourist t, TouristBuysTicket tb, Ticket_1 t1 \
+                            WHERE t.ID = tb.TID AND tb.TicketNo = t1.TicketNo  \
+                            GROUP BY t1.Type \
+                            HAVING avg(t.ArcadePoints) < (SELECT avg(ArcadePoints) \
+                                                        FROM Tourist)""")
+            result = cursor.fetchall()
+            context['result'] = result
+        return HttpResponse(template.render(context, request))
+
+    return HttpResponse(template.render(context, request))
 
 def view_table(name):
     with connection.cursor() as cursor:
