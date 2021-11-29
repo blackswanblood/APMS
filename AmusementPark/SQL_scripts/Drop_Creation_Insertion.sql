@@ -280,7 +280,13 @@ VALUES (213, 'Senior');
 INSERT INTO Ticket_1 (TicketNo, Type)
 VALUES (125, 'Combo_1');
 INSERT INTO Ticket_1 (TicketNo, Type)
+VALUES (126, 'Combo_1');
+INSERT INTO Ticket_1 (TicketNo, Type)
 VALUES (200, 'Combo_2');
+INSERT INTO Ticket_1 (TicketNo, Type)
+VALUES (201, 'Combo_2');
+INSERT INTO Ticket_1 (TicketNo, Type)
+VALUES (202, 'Combo_2');
 INSERT INTO Ticket_1 (TicketNo, Type)
 VALUES (12, 'Ferris wheel only');
 
@@ -344,9 +350,29 @@ VALUES (125, 'Carousel');
 INSERT INTO TicketForRide (TicketNo, RideName)
 VALUES (125, 'Ferris wheel');
 INSERT INTO TicketForRide (TicketNo, RideName)
+VALUES (12, 'Ferris wheel');
+INSERT INTO TicketForRide (TicketNo, RideName)
+VALUES (126, 'Carousel');
+INSERT INTO TicketForRide (TicketNo, RideName)
+VALUES (126, 'Ferris wheel');
+INSERT INTO TicketForRide (TicketNo, RideName)
 VALUES (200, 'Roller-coaster');
 INSERT INTO TicketForRide (TicketNo, RideName)
 VALUES (200, 'Jungle cruise');
+INSERT INTO TicketForRide (TicketNo, RideName)
+VALUES (200, 'Haunted Mansion');
+INSERT INTO TicketForRide (TicketNo, RideName)
+VALUES (201, 'Roller-coaster');
+INSERT INTO TicketForRide (TicketNo, RideName)
+VALUES (201, 'Jungle cruise');
+INSERT INTO TicketForRide (TicketNo, RideName)
+VALUES (201, 'Haunted Mansion');
+INSERT INTO TicketForRide (TicketNo, RideName)
+VALUES (202, 'Roller-coaster');
+INSERT INTO TicketForRide (TicketNo, RideName)
+VALUES (202, 'Jungle cruise');
+INSERT INTO TicketForRide (TicketNo, RideName)
+VALUES (202, 'Haunted Mansion');
 INSERT INTO TicketForRide (TicketNo, RideName)
 VALUES (123, 'Haunted Mansion');
 INSERT INTO TicketForRide (TicketNo, RideName)
