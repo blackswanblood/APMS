@@ -263,13 +263,23 @@ INSERT INTO Tourist (ID, Name, Age, ArcadePoints)
 VALUES (1, 'Beren', 10, 10500);
 INSERT INTO Tourist (ID, Name, Age, ArcadePoints)
 VALUES (2, 'Jerry', 80, 10500);
+INSERT INTO Tourist (ID, Name, Age, ArcadePoints)
+VALUES (3, 'Maxwell', 23, 500);
+INSERT INTO Tourist (ID, Name, Age, ArcadePoints)
+VALUES (4, 'Jenny', 12, 1000);
+INSERT INTO Tourist (ID, Name, Age, ArcadePoints)
+VALUES (5, 'Luna', 32, 10600);
+INSERT INTO Tourist (ID, Name, Age, ArcadePoints)
+VALUES (6, 'Obama', 50, 1000);
+INSERT INTO Tourist (ID, Name, Age, ArcadePoints)
+VALUES (7, 'Donald Trump', 72, 15000);
 
 INSERT INTO Ticket_2 (Type, Price)
 VALUES ('Adolescent', 200);
 INSERT INTO Ticket_2 (Type, Price)
 VALUES ('Adult', 300);
 INSERT INTO Ticket_2 (Type, Price)
-VALUES ('Senior', 250);
+VALUES ('Senior', 0);
 INSERT INTO Ticket_2 (Type, Price)
 VALUES ('Carousel only', 10);
 INSERT INTO Ticket_2 (Type, Price)
@@ -320,6 +330,17 @@ INSERT INTO TouristBuysTicket (TID, TicketNo)
 VALUES (1, 200);
 INSERT INTO TouristBuysTicket (TID, TicketNo)
 VALUES (2, 213);
+INSERT INTO TouristBuysTicket (TID, TicketNo)
+VALUES (3, 124);
+INSERT INTO TouristBuysTicket (TID, TicketNo)
+VALUES (4, 100);
+INSERT INTO TouristBuysTicket (TID, TicketNo)
+VALUES (5, 124);
+INSERT INTO TouristBuysTicket (TID, TicketNo)
+VALUES (6, 201);
+INSERT INTO TouristBuysTicket (TID, TicketNo)
+VALUES (7, 213);
+
 
 INSERT INTO Redeems (GID, TID)
 VALUES (3, 1111);
@@ -391,6 +412,22 @@ INSERT INTO TicketForRide (TicketNo, RideName)
 VALUES (202, 'Haunted Mansion');
 INSERT INTO TicketForRide (TicketNo, RideName)
 VALUES (123, 'Haunted Mansion');
+INSERT INTO TicketForRide (TicketNo, RideName)
+VALUES (123, 'Roller-coaster');
+INSERT INTO TicketForRide (TicketNo, RideName)
+VALUES (123, 'Jungle cruise');
+INSERT INTO TicketForRide (TicketNo, RideName)
+VALUES (123, 'Ferris wheel');
+INSERT INTO TicketForRide (TicketNo, RideName)
+VALUES (123, 'Flume ride');
+INSERT INTO TicketForRide (TicketNo, RideName)
+VALUES (124, 'Haunted Mansion');
+INSERT INTO TicketForRide (TicketNo, RideName)
+VALUES (124, 'Roller-coaster');
+INSERT INTO TicketForRide (TicketNo, RideName)
+VALUES (124, 'Jungle cruise');
+INSERT INTO TicketForRide (TicketNo, RideName)
+VALUES (124, 'Ferris wheel');
 INSERT INTO TicketForRide (TicketNo, RideName)
 VALUES (124, 'Flume ride');
 
