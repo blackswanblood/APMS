@@ -9,5 +9,5 @@ urlpatterns =[
     url(r'^insertion.html/$', views.insertion),
     url(r'^deletion.html/$', views.deletion),
     url(r'^division.html/$', views.division),
-    url(r'^aggregation_having.html$', views.aggregation_having)
+    url(r'^aggregation_having.html/$', views.aggregation_having)
 ]
