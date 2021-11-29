@@ -11,4 +11,8 @@ urlpatterns =[
     url(r'^deletion.html/$', views.deletion),
     url(r'^selection.html/$', views.selection),
     url(r'^nested_aggregation.html/$', views.nested_aggregation)
+    url(r'^deletion.html/$', views.deletion),
+    url(r'^join.html/$',views.join),
+    url(r'^projection.html/$',views.proj),
+    url(r'^agroupby.html/$', views.groupby)
 ]
