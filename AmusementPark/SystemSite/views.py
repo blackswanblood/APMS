@@ -334,7 +334,7 @@ def proj(request):
                 a1 = formP.cleaned_data['dropdown1']
                 a2 = formP.cleaned_data['dropdown2']
                 a3 = formP.cleaned_data['dropdown3']
-                if a1 != a2 and a2 != a3:
+                if a1 != a2 and a2 != a3 and a1 != a3:
                     with connection.cursor() as cursor:
                         cursor.execute("SELECT %s, %s, %s FROM Redeems r JOIN Tourist t ON t.ID = r.TID" % (a1, a2, a3))
                         aj_list = cursor.fetchall()
