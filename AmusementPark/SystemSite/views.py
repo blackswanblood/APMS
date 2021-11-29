@@ -215,10 +215,10 @@ def proj(request):
                         cursor.execute("SELECT %s, %s, %s FROM Redeems r JOIN Tourist t ON t.ID = r.TID" % (a1, a2, a3))
                         aj_list = cursor.fetchall()
                     context['aj_list'] = aj_list
-                    context['formP'] = formP
                     context['a1'] = dict_col[a1]
                     context['a2'] = dict_col[a2]
                     context['a3'] = dict_col[a3]
+                context['formP'] = formP
                 return HttpResponse(template.render(context, request))
     else: 
         context['formP'] = projForm()
