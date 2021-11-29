@@ -64,7 +64,7 @@
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
-                                <h1 class="pageheader-title">Amusement Park Management System</h1>
+                                <h1 class="pageheader-title">Amusement Park Manage System</h1>
                                 <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
 
                             </div>
@@ -76,9 +76,8 @@
                     <div class="ecommerce-widget">
 
 
-       
-                        <!-- Cashier List -->
-                        <div class="row" id="cashierWorkAtList">
+                    <div class="row">
+                            <!-- Tourist List -->
                             <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <h5 class="card-header">Tourist List</h5>
@@ -94,194 +93,99 @@
                                                         <th class="border-0">Arcade Points</th>
                                                     </tr>
                                                 </thead>
-                                                {% for cwl in tourist_list %}
+                                                {% for tourist in tourist_list %}
                                                 <tbody>
                                                     <tr>
-                                                        <td>{{cwl.0}}</td>
-                                                        <td>{{cwl.1}}</td>
-                                                        <td>{{cwl.2}}</td>
-                                                        <td>{{cwl.3}}</td>                                                        
-                                                    </tr>
+                                                        <td>{{tourist.0}}</td>
+                                                        <td>{{tourist.1}}</td>
+                                                        <td>{{tourist.2}}</td>
+                                                        <td>{{tourist.3}}</td>
                                                 </tbody>
                                                 {% endfor %}
                                             </table>
                                             {% else %}
-                                            <p>No result found.</p>
+                                            <p>No tourists found.</p>
                                             {% endif %}
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
                             <!-- Insertion -->
                         <!-- ============================================================== -->
-                        <div class="row">
-                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                                <div class="card">
-                                    <h5 class="card-header">Select Tourist by Arcade Points</h5>
-                                    <div class="card-body">
-                                        <form action="./" method="post">
-                                            {% csrf_token %}
-                                            
-                                            <div class="form-group">
-                                                <label for="lowerbound">Arcade points >= </label>
-                                                <input type="number" id="lowerbound" name="lowerbound"><br>
-                                                </input>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="upperbound">Arcade points &lt= </label>
-                                                <input type="number" id="upperbound" name="upperbound"><br>
-                                                </input>
-                                            </div>
-                                                <div class="col-sm-6 pl-0">
-                                                    <p>
-                                                        <button type="submit" class="btn btn-space btn-primary">Submit</button>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        {% if resultTourist %}
-                        <div class="row">
-                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
-                                <div class="card">  
-                                    <h5 class="card-header">Results: </h5>
-                                    <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table class="table">
-                                                {% if resultTourist %}
-                                                <thead class="bg-light">
-                                                    <tr class="border-0">
-                                                        <th class="border-0">ID</th>
-                                                        <th class="border-0">Name</th>
-                                                        <th class="border-0">Age </th>
-                                                        <th class="border-0">Arcade Points</th>
-                                                    </tr>
-                                                </thead>
-                                                {% for cwl in resultTourist %}
-                                                <tbody>
-                                                    <tr>
-                                                        <td>{{cwl.0}}</td>
-                                                        <td>{{cwl.1}}</td>
-                                                        <td>{{cwl.2}}</td>
-                                                        <td>{{cwl.3}}</td>                                                        
-                                                    </tr>
-                                                </tbody>
-                                                {% endfor %}
-                                                {% endif %}
-                                            </table>
-                                            
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                            <div class="card">
+                                <h5 class="card-header">Insert a tourist</h5>
+                                <div class="card-body">
+                                    <form action="./"  method="post">
+                                        {% csrf_token %}
+                                        <table>
+                                            {{form.as_table}}
+                                        </table>
                                         </div>
-                                    </div>
+                                            <div class="col-sm-6 pl-3">
+                                                <p>
+                                                    <button type="submit" class="btn btn-space btn-primary">Submit</button>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
-                        {%endif%}
 
-                        <!-- Ride Maintains List -->
-                        <div class="row" id="operatorList">
                             <div class="col-xl-9 col-lg-12 col-md-6 col-sm-12 col-12">
                                 <div class="card">
-                                    <h5 class="card-header">Operator List</h5>
+                                    <h5 class="card-header">Staff List</h5>
                                     <div class="card-body p-0">
                                         <div class="table-responsive">
                                             <table class="table">
-                                                {% if operator_list %}
+                                                {% if staff_list %}
                                                 <thead class="bg-light">
                                                     <tr class="border-0">
-                                                        <th class="border-0">Work ID</th>
-                                                        <th class="border-0">Qualifications</th>
-                                                        <th class="border-0">Assigned Ride</th>
+                                                        <th class="border-0">WorkID</th>
+                                                        <th class="border-0">Name</th>
                                                     </tr>
                                                 </thead>
-                                                {% for rm in operator_list %}
+                                                {% for staff in staff_list %}
                                                 <tbody>
                                                     <tr>
-                                                        <td>{{rm.0}}</td>
-                                                        <td>{{rm.1}}</td>
-                                                        <td>{{rm.2}}</td>
-                                                    </tr>
+                                                        <td>{{staff.0}}</td>
+                                                        <td>{{staff.1}}</td>
                                                 </tbody>
                                                 {% endfor %}
                                             </table>
                                             {% else %}
-                                            <p>No result found.</p>
+                                            <p>No staffs found.</p>
                                             {% endif %}
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                             <!-- ============================================================== -->
                             <!-- end recent orders  -->
                         <!-- Insertion -->
                         <!-- ============================================================== -->
-                        <div class="row">
-                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
-                                <div class="card">
-                                    <h5 class="card-header">Search Operator by Qualification</h5>
-                                    <div class="card-body">
-                                        <form action="./" method="post">
-                                            {% csrf_token %}
-                                            
-                                            <div class="form-group">
-                                                <label for="qualification">Search for operators by keyword in qualification: </label>
-                                                <input type="text" id="qualification" name="qualification"><br>
-                                                </input>
-                                            </div>
-
-                                                <div class="col-sm-6 pl-0">
-                                                    <p>
-                                                        <button type="submit" class="btn btn-space btn-primary">Submit</button>
-                                                    </p>
-                                                </div>
-                                            
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        {% if resultOperator %}
-                        <div class="row">
-                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12">
-                                <div class="card">  
-                                    <h5 class="card-header">Results: </h5>
-                                    <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table class="table">
-                                                {% if resultOperator %}
-                                                <thead class="bg-light">
-                                                    <tr class="border-0">
-                                                        <th class="border-0">WorkID</th>
-                                                        <th class="border-0">Qualification</th>
-                                                        <th class="border-0">Assigned Ride </th>
-                                                    </tr>
-                                                </thead>
-                                                {% for cwl in resultOperator %}
-                                                <tbody>
-                                                    <tr>
-                                                        <td>{{cwl.0}}</td>
-                                                        <td>{{cwl.1}}</td>
-                                                        <td>{{cwl.2}}</td>                                                      
-                                                    </tr>
-                                                </tbody>
-                                                {% endfor %}
-                                                {% endif %}
-                                            </table>
-                                            
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                            <div class="card">
+                                <h5 class="card-header">Insert a staff</h5>
+                                <div class="card-body">
+                                    <form action="./"  method="post">
+                                        {% csrf_token %}
+                                        <table>
+                                            {{form1.as_table}}
+                                        </table>
                                         </div>
-                                    </div>
+                                            <div class="col-sm-6 pl-3">
+                                                <p>
+                                                    <button type="submit" class="btn btn-space btn-primary">Submit</button>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
-                        {%endif%}
-
                     </div>
                 </div>
             </div>
