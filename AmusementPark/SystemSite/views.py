@@ -268,6 +268,8 @@ def nested_aggregation(request):
             result = cursor.fetchall()
             context['result'] = result
         return HttpResponse(template.render(context, request))
+    
+    return HttpResponse(template.render(context, request))
 
 # Join
 def join(request):
