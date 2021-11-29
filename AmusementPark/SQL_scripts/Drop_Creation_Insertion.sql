@@ -238,6 +238,16 @@ INSERT INTO Gift_1 (ID, Category)
 VALUES (20, 'middle-size stuffed toys');
 INSERT INTO Gift_1 (ID, Category)
 VALUES (25, 'books');
+INSERT INTO Gift_1 (ID, Category)
+VALUES (26, 'books');
+INSERT INTO Gift_1 (ID, Category)
+VALUES (10, 'gaming console');
+INSERT INTO Gift_1 (ID, Category)
+VALUES (100, 'fashion accessories');
+INSERT INTO Gift_1 (ID, Category)
+VALUES (101, 'fashion accessories');
+INSERT INTO Gift_1 (ID, Category)
+VALUES (102, 'fashion accessories');
 
 
 
@@ -289,6 +299,12 @@ INSERT INTO Ticket_1 (TicketNo, Type)
 VALUES (202, 'Combo_2');
 INSERT INTO Ticket_1 (TicketNo, Type)
 VALUES (12, 'Ferris wheel only');
+INSERT INTO Ticket_1 (TicketNo, Type)
+VALUES (100, 'Combo_1');
+INSERT INTO Ticket_1 (TicketNo, Type)
+VALUES (13, 'Ferris wheel only');
+INSERT INTO Ticket_1 (TicketNo, Type)
+VALUES (14, 'Ferris wheel only');
 
 
 
@@ -429,8 +445,24 @@ INSERT INTO TouristPlaysMachine (TID, AName, MName, PointsEarned)
 VALUES (1125, 'Come to play', 'Hoop', 10);
 INSERT INTO TouristPlaysMachine (TID, AName, MName, PointsEarned)
 VALUES (1141, 'FunTime', 'Resident Evil', 8);
-
-
+INSERT INTO TouristPlaysMachine (TID, AName, MName, PointsEarned)
+VALUES (1111, 'Come to play', 'Hoop', 8);
+INSERT INTO TouristPlaysMachine (TID, AName, MName, PointsEarned)
+VALUES (1111, 'Saga', 'MotorRace', 10);
+INSERT INTO TouristPlaysMachine (TID, AName, MName, PointsEarned)
+VALUES (1111, 'Saga', 'CraneMachine', 13);
+INSERT INTO TouristPlaysMachine (TID, AName, MName, PointsEarned)
+VALUES (1111, 'FunTime', 'Resident Evil', 20);
+INSERT INTO TouristPlaysMachine (TID, AName, MName, PointsEarned)
+VALUES (1112, 'Max!!', 'CarRace',15);
+INSERT INTO TouristPlaysMachine (TID, AName, MName, PointsEarned)
+VALUES (1112, 'Saga', 'MotorRace',10);
+INSERT INTO TouristPlaysMachine (TID, AName, MName, PointsEarned)
+VALUES (1112, 'Come to play', 'Hoop',30);
+INSERT INTO TouristPlaysMachine (TID, AName, MName, PointsEarned)
+VALUES (1112, 'FunTime', 'Resident Evil',15);
+INSERT INTO TouristPlaysMachine (TID, AName, MName, PointsEarned)
+VALUES (1112, 'Saga', 'CarRace',10);
 
 INSERT INTO Cashier_WorksAt(WorkID, AName)
 VALUES (1, 'Saga');
@@ -484,6 +516,12 @@ INSERT INTO Uses (WID, EID) VALUES (102, 11);
 INSERT INTO Uses (WID, EID) VALUES (103, 12);
 INSERT INTO Uses (WID, EID) VALUES (104, 13);
 INSERT INTO Uses (WID, EID) VALUES (105, 14);
+INSERT INTO Uses (WID, EID) VALUES (100, 11);
+INSERT INTO Uses (WID, EID) VALUES (100, 12);
+INSERT INTO Uses (WID, EID) VALUES (100, 13);
+INSERT INTO Uses (WID, EID) VALUES (100, 14);
+INSERT INTO Uses (WID, EID) VALUES (100, 15);
+
 
 
 
