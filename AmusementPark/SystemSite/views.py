@@ -146,6 +146,130 @@ def deletion(request):
     }
     return HttpResponse(template.render(context, request))
 
+# Update
+def update(request):
+    cashier_worksat_list = view_table('Cashier_WorksAt')
+    arcade_list = view_table('Arcade')
+    rideMaintains_list = view_table('Ride_Maintains')
+    template = loader.get_template('SystemSite/update.html')
+
+    if request.method == 'POST' and "Cashier ID" in request.POST:
+        cashierID = request.POST['Cashier ID']
+        arcade = request.POST['Arcade Name']
+        with connection.cursor() as cursor:
+            cursor.execute("UPDATE Cashier_WorksAt \
+                            SET AName = %s  \
+                            WHERE WorkID = %s", [arcade, cashierID])
+        return HttpResponseRedirect('./')
+
+    elif request.method == 'POST' and "RideName" in request.POST:
+        form = MaintainanceForm(request.POST)
+        if form.is_valid():
+                RideName = form.cleaned_data['RideName']
+                WorkID = form.cleaned_data['WorkID']
+                EquipmentID = form.cleaned_data['EquipmentID']
+                TimeofInspection = form.cleaned_data['TOI']
+
+                with connection.cursor() as cursor:
+                    cursor.execute("SELECT WorkID, EID FROM Ride_Maintains \
+                                    WHERE RName = %s", [RideName])
+                    (oldWorkID, oldEquipmentID) = cursor.fetchall()[0]
+
+                    cursor.execute("UPDATE Ride_Maintains \
+                        SET WorkID = %s, EID = %s, TimeofInspection = date(%s)  \
+                        WHERE RName = %s", [WorkID, EquipmentID, TimeofInspection, RideName])
+
+                    cursor.execute("UPDATE Uses \
+                        SET WID = %s, EID = %s  \
+                        WHERE WID = %s AND EID = %s ", [WorkID, EquipmentID, oldWorkID, oldEquipmentID])
+                return HttpResponseRedirect('./')
+
+    else: 
+        form = MaintainanceForm()
+    
+    context = {
+        'cashier_worksat_list': cashier_worksat_list,
+        'arcade_list': arcade_list,
+        'rideMaintains_list': rideMaintains_list,
+        'form' : form
+    }
+    return HttpResponse(template.render(context, request))
+
+# Selection 
+def selection(request):
+    tourist_list = view_table('Tourist')
+    operator_list = view_table_natural_join(['Operator_Operates_1', 'Operator_Operates_2'])
+    template = loader.get_template('SystemSite/selection.html')
+    
+    context = {
+        'tourist_list': tourist_list,
+        'operator_list': operator_list,
+        'resultTourist' : "",
+        'resultOperator' : ""
+    }
+
+    if request.method == 'POST' and 'lowerbound' in request.POST:
+        lower_bound = request.POST['lowerbound']
+        upper_bound = request.POST['upperbound']
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT * FROM Tourist \
+                            WHERE ArcadePoints >= %s AND ArcadePoints <= %s", [lower_bound, upper_bound])
+            resultTourist = cursor.fetchall()
+            context["resultTourist"] = resultTourist
+        return HttpResponse(template.render(context, request))
+    
+    if request.method == 'POST' and 'qualification' in request.POST:
+        qualification = request.POST['qualification']
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT WorkID, op1.Qualification, RName FROM Operator_Operates_1 op1, Operator_Operates_2 op2 \
+                            WHERE op1.Qualification = op2.Qualification  \
+                            AND op1.Qualification LIKE %s", ["%" + qualification + "%"])
+            resultOperator = cursor.fetchall()
+            context["resultOperator"] = resultOperator
+        return HttpResponse(template.render(context, request))
+    
+
+    return HttpResponse(template.render(context, request))
+
+def nested_aggregation(request):
+    tourist_joined_list = []
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT t.ID, t.Name, t.ArcadePoints, tb.TicketNo, t1.Type  \
+                       FROM Tourist t, TouristBuysTicket tb, Ticket_1 t1 \
+                       WHERE t.ID = tb.TID AND tb.TicketNo = t1.TicketNo")
+        tourist_joined_list = cursor.fetchall()
+    
+    template = loader.get_template('SystemSite/nested_aggregation.html')
+    
+    context = {
+        'tourist_joined_list': tourist_joined_list,
+        'selection': "gt",
+        'result' : ""
+    }
+
+    if request.method == 'POST':
+        with connection.cursor() as cursor:
+            if request.POST['Relation'] == "gt":
+                context['selection'] = "gt"
+                cursor.execute("""SELECT t1.Type, avg(t.ArcadePoints), count(*)   \
+                            FROM Tourist t, TouristBuysTicket tb, Ticket_1 t1 \
+                            WHERE t.ID = tb.TID AND tb.TicketNo = t1.TicketNo  \
+                            GROUP BY t1.Type \
+                            HAVING avg(t.ArcadePoints) > (SELECT avg(ArcadePoints) \
+                                                        FROM Tourist)""")
+            elif request.POST['Relation'] == "lt":
+                context['selection'] = "lt"
+                cursor.execute("""SELECT t1.Type, avg(t.ArcadePoints), count(*)   \
+                            FROM Tourist t, TouristBuysTicket tb, Ticket_1 t1 \
+                            WHERE t.ID = tb.TID AND tb.TicketNo = t1.TicketNo  \
+                            GROUP BY t1.Type \
+                            HAVING avg(t.ArcadePoints) < (SELECT avg(ArcadePoints) \
+                                                        FROM Tourist)""")
+            result = cursor.fetchall()
+            context['result'] = result
+        return HttpResponse(template.render(context, request))
+    
+    return HttpResponse(template.render(context, request))
 
 # Join
 def join(request):
@@ -244,6 +368,13 @@ def groupby(request):
 def view_table(name):
     with connection.cursor() as cursor:
         cursor.execute("SELECT * FROM " + name)
+        table = cursor.fetchall()
+    return table
+
+def view_table_natural_join(names):
+    with connection.cursor() as cursor:
+        joinedstr = " NATURAL JOIN ".join(names)
+        cursor.execute("SELECT * FROM " + joinedstr)
         table = cursor.fetchall()
     return table
 
