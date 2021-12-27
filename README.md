@@ -1,4 +1,4 @@
-# SQL Project
+# SQL Project - APMS
 
 Hello all!
 
@@ -18,7 +18,8 @@ Regarding tickets, tourists can choose from day passes or individual rides: ride
 
 Tourists can play on arcade machines, where they can win points to exchange gifts. Each arcade offers different gifts as prizes. All the arcades in the park have some arcade machines, but it is possible that identical machines appear in different arcades. Consequently, machines cannot uniquely be identified by its name unless combined with the arcade it belongs to. 
 
-
+### Normalization
+It entails organizing the columns and tables of a database to ensure that their dependencies are properly enforced by database integrity constraints and reduce the redundancy and eliminates undesired characteristics. All relation schemas have been reduced to BCNF.
 
 Inspired by a dating app and Disney land database management system.
 
@@ -35,4 +36,5 @@ python manage.py  runserver
 
 # Acknowedgement
 HTML template reference: https://github.com/puikinsh/concept.
+
 Django docs: https://www.djangoproject.com/
